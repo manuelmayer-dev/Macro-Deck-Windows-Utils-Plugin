@@ -1,5 +1,5 @@
 # Windows Utils plugin for Macro Deck 2
-Control your Home Assistant smart home with Macro Deck!
+A collection of some useful functions for controlling Windows
 
 # Features
 - ### Explorer control

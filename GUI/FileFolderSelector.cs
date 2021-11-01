@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using SuchByte.MacroDeck.GUI;
@@ -20,13 +22,60 @@ namespace SuchByte.WindowsUtils.GUI
             this.type = selectType;
             InitializeComponent();
 
+            switch (this.type)
+            {
+                case SelectType.FOLDER:
+                    this.lblChoose.Text = "Choose a folder or drag and drop it here";
+                    break;
+                case SelectType.FILE:
+                    this.lblChoose.Text = "Choose a file or drag and drop it here";
+                    break;
+            }
+
+
+            this.AllowDrop = true;
+            this.DragEnter += FileFolderSelector_DragEnter;
+            this.DragDrop += FileFolderSelector_DragDrop;
+
             actionConfigurator.ActionSave += OnActionSave;
 
             this.LoadConfig();
         }
 
+        private void FileFolderSelector_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string file = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+                this.path.Text = file;
+            }
+            catch { }
+        }
+
+        private void FileFolderSelector_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
         private void OnActionSave(object sender, EventArgs e)
         {
+            if (this.type != SelectType.FOLDER)
+            {
+                using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                {
+                    if (msgBox.ShowDialog("Import icon", "Do you want to import icon of the file type?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            Utils.FileIconImport.ImportIcon(this.path.Text);
+                        }
+                        catch { }
+                    }
+                }
+            }
             this.UpdateConfig();
         }
 
@@ -50,6 +99,33 @@ namespace SuchByte.WindowsUtils.GUI
             {
                 return;
             }
+
+            FileAttributes attr = File.GetAttributes(this.path.Text);
+            if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+            {
+                Debug.WriteLine("folder");
+                if (this.type == SelectType.FILE)
+                {
+                    using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                    {
+                        msgBox.ShowDialog("Error", "The selected path is not a valid file.", MessageBoxButtons.OK);
+                    }
+                    return;
+                }
+            } else
+            {
+                Debug.WriteLine("file");
+                if (this.type == SelectType.FOLDER)
+                {
+                    using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                    {
+                        msgBox.ShowDialog("Error", "The selected path is not a valid folder.", MessageBoxButtons.OK);
+                    }
+                    return;
+                }
+            }
+
+
             JObject configurationObject = JObject.FromObject(new
             {
                 path = this.path.Text,
@@ -57,6 +133,8 @@ namespace SuchByte.WindowsUtils.GUI
             this.pluginAction.Configuration = configurationObject.ToString();
             this.pluginAction.DisplayName = this.pluginAction.Name + " -> " + this.path.Text;
         }
+
+
 
         private void BtnBrowse_Click(object sender, EventArgs e)
         {

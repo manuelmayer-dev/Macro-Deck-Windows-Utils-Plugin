@@ -32,6 +32,7 @@ namespace SuchByte.WindowsUtils.GUI
             this.btnBrowse = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
             this.label1 = new System.Windows.Forms.Label();
             this.path = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
+            this.lblChoose = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBrowse
@@ -83,14 +84,25 @@ namespace SuchByte.WindowsUtils.GUI
             this.path.TabIndex = 3;
             this.path.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // FolderSelector
+            // lblChoose
+            // 
+            this.lblChoose.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblChoose.Location = new System.Drawing.Point(3, 184);
+            this.lblChoose.Name = "lblChoose";
+            this.lblChoose.Size = new System.Drawing.Size(709, 64);
+            this.lblChoose.TabIndex = 6;
+            this.lblChoose.Text = "Choose a file or drag and drop it here";
+            this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FileFolderSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.path);
-            this.Name = "FolderSelector";
+            this.Name = "FileFolderSelector";
             this.ResumeLayout(false);
 
         }
@@ -100,5 +112,6 @@ namespace SuchByte.WindowsUtils.GUI
         private MacroDeck.GUI.CustomControls.ButtonPrimary btnBrowse;
         private System.Windows.Forms.Label label1;
         private MacroDeck.GUI.CustomControls.RoundedTextBox path;
+        private System.Windows.Forms.Label lblChoose;
     }
 }

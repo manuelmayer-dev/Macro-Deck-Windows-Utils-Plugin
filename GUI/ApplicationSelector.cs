@@ -1,12 +1,15 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using ImageMagick;
+using Newtonsoft.Json.Linq;
 using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
+using SuchByte.MacroDeck.Icons;
 using SuchByte.MacroDeck.Plugins;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -23,14 +26,47 @@ namespace SuchByte.WindowsUtils.GUI
             this.pluginAction = pluginAction;
             InitializeComponent();
 
+            this.AllowDrop = true;
+            this.DragEnter += ApplicationSelector_DragEnter;
+            this.DragDrop += ApplicationSelector_DragDrop;
+
             actionConfigurator.ActionSave += OnActionSave;
 
             this.LoadConfig();
         }
 
+
+        private void ApplicationSelector_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string file = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+                this.path.Text = file;
+            }
+            catch { }
+        }
+
+        private void ApplicationSelector_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
         private void OnActionSave(object sender, EventArgs e)
         {
-            this.UpdateConfig();
+            using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+            {
+                if (msgBox.ShowDialog("Import icon", "Do you want to import the file's icon?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        Utils.FileIconImport.ImportIcon(this.path.Text);
+                    } catch { }
+                }
+                this.UpdateConfig();
+            }
         }
 
 

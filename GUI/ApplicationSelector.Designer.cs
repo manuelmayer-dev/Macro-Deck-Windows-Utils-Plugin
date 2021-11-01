@@ -36,6 +36,7 @@ namespace SuchByte.WindowsUtils.GUI
             this.btnBrowse = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
             this.label2 = new System.Windows.Forms.Label();
             this.arguments = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
+            this.lblChoose = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // path
@@ -116,10 +117,21 @@ namespace SuchByte.WindowsUtils.GUI
             this.arguments.TabIndex = 4;
             this.arguments.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             // 
+            // lblChoose
+            // 
+            this.lblChoose.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblChoose.Location = new System.Drawing.Point(3, 184);
+            this.lblChoose.Name = "lblChoose";
+            this.lblChoose.Size = new System.Drawing.Size(709, 64);
+            this.lblChoose.TabIndex = 7;
+            this.lblChoose.Text = "Choose a file or drag and drop it here";
+            this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ApplicationSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.arguments);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBrowse);
@@ -137,5 +149,6 @@ namespace SuchByte.WindowsUtils.GUI
         private ButtonPrimary btnBrowse;
         private System.Windows.Forms.Label label2;
         private RoundedTextBox arguments;
+        private System.Windows.Forms.Label lblChoose;
     }
 }

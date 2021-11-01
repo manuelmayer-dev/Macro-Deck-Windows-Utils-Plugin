@@ -2,6 +2,14 @@
 A collection of some useful functions for controlling Windows
 
 # Features
+- ### Start application
+Start .exe, .ink and .url files with and without arguments
+- ### Open file
+Open any file
+- ### Open folder
+Open any folder on your system
+- ### Volume control
+Control your system's volume
 - ### Explorer control
 Control the Windows Explorer or webbrowser (back/forward/home/refresh)
 - ### Hotkey

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils;
@@ -15,15 +16,27 @@ namespace SuchByte.WindowsUtils.GUI
 {
     public partial class ExplorerControlConfigurator : ActionConfigControl
     {
-        PluginAction _macroDeckAction;
+        PluginAction pluginAction;
 
-        public ExplorerControlConfigurator(PluginAction macroDeckAction)
+        public ExplorerControlConfigurator(PluginAction pluginAction, ActionConfigurator actionConfigurator)
         {
-            this._macroDeckAction = macroDeckAction;
+            this.pluginAction = pluginAction;
             InitializeComponent();
-            if (macroDeckAction.Configuration != null && macroDeckAction.Configuration.Length > 0)
+
+            this.LoadConfig();
+
+            actionConfigurator.ActionSave += OnActionSave;
+        }
+        private void OnActionSave(object sender, EventArgs e)
+        {
+            this.UpdateConfig();
+        }
+
+        private void LoadConfig()
+        {
+            if (this.pluginAction.Configuration != null && this.pluginAction.Configuration.Length > 0)
             {
-                JObject jObject = JObject.Parse(macroDeckAction.Configuration);
+                JObject jObject = JObject.Parse(this.pluginAction.Configuration);
                 if (jObject != null)
                 {
                     switch (jObject["action"].ToString())
@@ -43,19 +56,16 @@ namespace SuchByte.WindowsUtils.GUI
                     }
                 }
             }
-            this.radioBack.CheckedChanged += this.Radio_CheckedChanged;
-            this.radioForward.CheckedChanged += this.Radio_CheckedChanged;
-            this.radioHome.CheckedChanged += this.Radio_CheckedChanged;
-            this.radioRefresh.CheckedChanged += this.Radio_CheckedChanged;
         }
 
-        private void Radio_CheckedChanged(object sender, EventArgs e)
+        private void UpdateConfig()
         {
             JObject jObject = new JObject();
             if (this.radioBack.Checked)
             {
                 jObject["action"] = "back";
-            } else if (this.radioForward.Checked)
+            }
+            else if (this.radioForward.Checked)
             {
                 jObject["action"] = "forward";
             }
@@ -67,8 +77,9 @@ namespace SuchByte.WindowsUtils.GUI
             {
                 jObject["action"] = "refresh";
             }
-            this._macroDeckAction.Configuration = jObject.ToString();
-            this._macroDeckAction.DisplayName = this._macroDeckAction.Name + " -> " + jObject["action"].ToString();
+            this.pluginAction.Configuration = jObject.ToString();
+            this.pluginAction.DisplayName = this.pluginAction.Name + " -> " + jObject["action"].ToString();
         }
+
     }
 }

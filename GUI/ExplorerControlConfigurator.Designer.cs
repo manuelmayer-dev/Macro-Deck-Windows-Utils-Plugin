@@ -1,4 +1,6 @@
 ﻿
+using SuchByte.MacroDeck.GUI.CustomControls;
+
 namespace SuchByte.WindowsUtils.GUI
 {
     partial class ExplorerControlConfigurator
@@ -31,10 +33,10 @@ namespace SuchByte.WindowsUtils.GUI
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioBack = new System.Windows.Forms.RadioButton();
-            this.radioForward = new System.Windows.Forms.RadioButton();
-            this.radioHome = new System.Windows.Forms.RadioButton();
-            this.radioRefresh = new System.Windows.Forms.RadioButton();
+            this.radioBack = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
+            this.radioForward = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
+            this.radioHome = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
+            this.radioRefresh = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
             this.SuspendLayout();
             // 
             // label2
@@ -63,8 +65,10 @@ namespace SuchByte.WindowsUtils.GUI
             // radioBack
             // 
             this.radioBack.AutoSize = true;
+            this.radioBack.Checked = true;
+            this.radioBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioBack.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioBack.Location = new System.Drawing.Point(315, 111);
+            this.radioBack.Location = new System.Drawing.Point(172, 124);
             this.radioBack.Name = "radioBack";
             this.radioBack.Size = new System.Drawing.Size(59, 23);
             this.radioBack.TabIndex = 6;
@@ -75,36 +79,36 @@ namespace SuchByte.WindowsUtils.GUI
             // radioForward
             // 
             this.radioForward.AutoSize = true;
+            this.radioForward.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioForward.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioForward.Location = new System.Drawing.Point(315, 140);
+            this.radioForward.Location = new System.Drawing.Point(257, 124);
             this.radioForward.Name = "radioForward";
             this.radioForward.Size = new System.Drawing.Size(85, 23);
             this.radioForward.TabIndex = 7;
-            this.radioForward.TabStop = true;
             this.radioForward.Text = "Forward";
             this.radioForward.UseVisualStyleBackColor = true;
             // 
             // radioHome
             // 
             this.radioHome.AutoSize = true;
+            this.radioHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioHome.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioHome.Location = new System.Drawing.Point(315, 169);
+            this.radioHome.Location = new System.Drawing.Point(368, 124);
             this.radioHome.Name = "radioHome";
             this.radioHome.Size = new System.Drawing.Size(69, 23);
             this.radioHome.TabIndex = 8;
-            this.radioHome.TabStop = true;
             this.radioHome.Text = "Home";
             this.radioHome.UseVisualStyleBackColor = true;
             // 
             // radioRefresh
             // 
             this.radioRefresh.AutoSize = true;
+            this.radioRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioRefresh.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioRefresh.Location = new System.Drawing.Point(315, 198);
+            this.radioRefresh.Location = new System.Drawing.Point(463, 124);
             this.radioRefresh.Name = "radioRefresh";
             this.radioRefresh.Size = new System.Drawing.Size(80, 23);
             this.radioRefresh.TabIndex = 9;
-            this.radioRefresh.TabStop = true;
             this.radioRefresh.Text = "Refresh";
             this.radioRefresh.UseVisualStyleBackColor = true;
             // 
@@ -128,9 +132,9 @@ namespace SuchByte.WindowsUtils.GUI
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioBack;
-        private System.Windows.Forms.RadioButton radioForward;
-        private System.Windows.Forms.RadioButton radioHome;
-        private System.Windows.Forms.RadioButton radioRefresh;
+        private TabRadioButton radioBack;
+        private TabRadioButton radioForward;
+        private TabRadioButton radioHome;
+        private TabRadioButton radioRefresh;
     }
 }

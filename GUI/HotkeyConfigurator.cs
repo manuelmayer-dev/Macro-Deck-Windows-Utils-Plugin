@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
+using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.WindowsUtils;
+using SuchByte.WindowsUtils.Actions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,19 +18,32 @@ namespace SuchByte.WindowsUtils.GUI
     public partial class HotkeyConfigurator : ActionConfigControl
     {
 
-        HotkeyAction _macroDeckAction;
-        public HotkeyConfigurator(HotkeyAction macroDeckAction)
+        HotkeyAction pluginAction;
+        public HotkeyConfigurator(HotkeyAction pluginAction, ActionConfigurator actionConfigurator)
         {
-            this._macroDeckAction = macroDeckAction;
+            this.pluginAction = pluginAction;
             InitializeComponent();
 
+            actionConfigurator.ActionSave += OnActionSave;
+
+            this.LoadConfig();
+        }
+
+        private void OnActionSave(object sender, EventArgs e)
+        {
+            this.UpdateConfig();
+        }
+
+
+        private void LoadConfig()
+        {
             foreach (VirtualKeyCode keyCode in (VirtualKeyCode[])Enum.GetValues(typeof(VirtualKeyCode)))
             {
                 this.key.Items.Add(keyCode);
             }
-            if (macroDeckAction.Configuration != null && macroDeckAction.Configuration.Length > 0)
+            if (this.pluginAction.Configuration != null && this.pluginAction.Configuration.Length > 0)
             {
-                JObject jObject = JObject.Parse(macroDeckAction.Configuration);
+                JObject jObject = JObject.Parse(this.pluginAction.Configuration);
                 if (jObject != null)
                 {
                     this.checkLWin.Checked = Boolean.Parse(jObject["lwin"].ToString());
@@ -45,18 +60,6 @@ namespace SuchByte.WindowsUtils.GUI
                     this.key.Text = jObject["key"].ToString();
                 }
             }
-            this.checkLWin.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkRWin.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkCtrl.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkLCtrl.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkRCtrl.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkShift.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkLShift.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkRShift.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkAlt.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkLAlt.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.checkRAlt.CheckedChanged += new EventHandler(this.Check_CheckedChanged);
-            this.key.SelectedIndexChanged += new EventHandler(this.Key_SelectedIndexChanged);
         }
 
         private void LblDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -69,16 +72,6 @@ namespace SuchByte.WindowsUtils.GUI
                 }
             };
             p.Start();
-        }
-
-        private void Key_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.UpdateConfig();
-        }
-
-        private void Check_CheckedChanged(object sender, EventArgs e)
-        {
-            this.UpdateConfig();
         }
 
         private void UpdateConfig()
@@ -100,9 +93,9 @@ namespace SuchByte.WindowsUtils.GUI
             };
             if (this.key.Text.Length > 0)
             {
-                this._macroDeckAction.Configuration = jObject.ToString();
+                this.pluginAction.Configuration = jObject.ToString();
             }
-            this._macroDeckAction.DisplayName = this._macroDeckAction.Name + " -> " +
+            this.pluginAction.DisplayName = this.pluginAction.Name + " -> " +
                 (checkLWin.Checked ? "lwin + " : "") + (checkRWin.Checked ? "rwin + " : "") +
                 (checkLCtrl.Checked ? "lctrl + " : "") + (checkRCtrl.Checked ? "rctrl + " : "") + (checkCtrl.Checked ? "ctrl + " : "") + 
                 (checkLShift.Checked ? "lshift + " : "") + (checkRShift.Checked ? "rshift + " : "") + (checkShift.Checked ? "shift + " : "") +

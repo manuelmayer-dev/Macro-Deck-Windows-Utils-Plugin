@@ -1,4 +1,6 @@
 ﻿
+using SuchByte.MacroDeck.GUI.CustomControls;
+
 namespace SuchByte.WindowsUtils.GUI
 {
     partial class HotkeyConfigurator
@@ -32,7 +34,7 @@ namespace SuchByte.WindowsUtils.GUI
             this.checkCtrl = new System.Windows.Forms.CheckBox();
             this.checkShift = new System.Windows.Forms.CheckBox();
             this.checkAlt = new System.Windows.Forms.CheckBox();
-            this.key = new System.Windows.Forms.ComboBox();
+            this.key = new SuchByte.MacroDeck.GUI.CustomControls.RoundedComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +55,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkCtrl.AutoSize = true;
             this.checkCtrl.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkCtrl.Location = new System.Drawing.Point(163, 123);
+            this.checkCtrl.Location = new System.Drawing.Point(163, 124);
             this.checkCtrl.Name = "checkCtrl";
             this.checkCtrl.Size = new System.Drawing.Size(66, 23);
             this.checkCtrl.TabIndex = 0;
@@ -64,7 +66,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkShift.AutoSize = true;
             this.checkShift.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkShift.Location = new System.Drawing.Point(271, 123);
+            this.checkShift.Location = new System.Drawing.Point(271, 124);
             this.checkShift.Name = "checkShift";
             this.checkShift.Size = new System.Drawing.Size(60, 23);
             this.checkShift.TabIndex = 1;
@@ -75,7 +77,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkAlt.AutoSize = true;
             this.checkAlt.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkAlt.Location = new System.Drawing.Point(374, 123);
+            this.checkAlt.Location = new System.Drawing.Point(374, 124);
             this.checkAlt.Name = "checkAlt";
             this.checkAlt.Size = new System.Drawing.Size(48, 23);
             this.checkAlt.TabIndex = 2;
@@ -84,19 +86,24 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             // key
             // 
+            this.key.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.key.Cursor = System.Windows.Forms.Cursors.Hand;
             this.key.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.key.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.key.FormattingEnabled = true;
-            this.key.Location = new System.Drawing.Point(460, 123);
+            this.key.Icon = null;
+            this.key.Location = new System.Drawing.Point(460, 120);
             this.key.Name = "key";
-            this.key.Size = new System.Drawing.Size(200, 27);
+            this.key.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
+            this.key.SelectedIndex = -1;
+            this.key.SelectedItem = null;
+            this.key.Size = new System.Drawing.Size(200, 31);
             this.key.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(241, 126);
+            this.label1.Location = new System.Drawing.Point(241, 127);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 19);
             this.label1.TabIndex = 4;
@@ -106,7 +113,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(344, 126);
+            this.label2.Location = new System.Drawing.Point(344, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 19);
             this.label2.TabIndex = 5;
@@ -116,7 +123,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(430, 126);
+            this.label3.Location = new System.Drawing.Point(430, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 19);
             this.label3.TabIndex = 6;
@@ -128,7 +135,7 @@ namespace SuchByte.WindowsUtils.GUI
             this.lblDetails.AutoSize = true;
             this.lblDetails.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDetails.LinkColor = System.Drawing.Color.Silver;
-            this.lblDetails.Location = new System.Drawing.Point(666, 128);
+            this.lblDetails.Location = new System.Drawing.Point(666, 126);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(15, 18);
             this.lblDetails.TabIndex = 7;
@@ -141,7 +148,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkLCtrl.AutoSize = true;
             this.checkLCtrl.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkLCtrl.Location = new System.Drawing.Point(163, 96);
+            this.checkLCtrl.Location = new System.Drawing.Point(163, 97);
             this.checkLCtrl.Name = "checkLCtrl";
             this.checkLCtrl.Size = new System.Drawing.Size(74, 23);
             this.checkLCtrl.TabIndex = 8;
@@ -152,7 +159,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkRCtrl.AutoSize = true;
             this.checkRCtrl.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkRCtrl.Location = new System.Drawing.Point(163, 150);
+            this.checkRCtrl.Location = new System.Drawing.Point(163, 151);
             this.checkRCtrl.Name = "checkRCtrl";
             this.checkRCtrl.Size = new System.Drawing.Size(76, 23);
             this.checkRCtrl.TabIndex = 9;
@@ -163,7 +170,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkLShift.AutoSize = true;
             this.checkLShift.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkLShift.Location = new System.Drawing.Point(271, 96);
+            this.checkLShift.Location = new System.Drawing.Point(271, 97);
             this.checkLShift.Name = "checkLShift";
             this.checkLShift.Size = new System.Drawing.Size(68, 23);
             this.checkLShift.TabIndex = 10;
@@ -174,7 +181,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkRShift.AutoSize = true;
             this.checkRShift.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkRShift.Location = new System.Drawing.Point(271, 150);
+            this.checkRShift.Location = new System.Drawing.Point(271, 151);
             this.checkRShift.Name = "checkRShift";
             this.checkRShift.Size = new System.Drawing.Size(70, 23);
             this.checkRShift.TabIndex = 11;
@@ -185,7 +192,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkLAlt.AutoSize = true;
             this.checkLAlt.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkLAlt.Location = new System.Drawing.Point(374, 96);
+            this.checkLAlt.Location = new System.Drawing.Point(374, 97);
             this.checkLAlt.Name = "checkLAlt";
             this.checkLAlt.Size = new System.Drawing.Size(56, 23);
             this.checkLAlt.TabIndex = 12;
@@ -196,7 +203,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkRAlt.AutoSize = true;
             this.checkRAlt.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkRAlt.Location = new System.Drawing.Point(374, 150);
+            this.checkRAlt.Location = new System.Drawing.Point(374, 151);
             this.checkRAlt.Name = "checkRAlt";
             this.checkRAlt.Size = new System.Drawing.Size(58, 23);
             this.checkRAlt.TabIndex = 13;
@@ -207,7 +214,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkRWin.AutoSize = true;
             this.checkRWin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkRWin.Location = new System.Drawing.Point(55, 136);
+            this.checkRWin.Location = new System.Drawing.Point(55, 137);
             this.checkRWin.Name = "checkRWin";
             this.checkRWin.Size = new System.Drawing.Size(69, 23);
             this.checkRWin.TabIndex = 17;
@@ -218,7 +225,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.checkLWin.AutoSize = true;
             this.checkLWin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkLWin.Location = new System.Drawing.Point(55, 109);
+            this.checkLWin.Location = new System.Drawing.Point(55, 110);
             this.checkLWin.Name = "checkLWin";
             this.checkLWin.Size = new System.Drawing.Size(67, 23);
             this.checkLWin.TabIndex = 16;
@@ -229,7 +236,7 @@ namespace SuchByte.WindowsUtils.GUI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(133, 127);
+            this.label4.Location = new System.Drawing.Point(133, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(21, 19);
             this.label4.TabIndex = 15;
@@ -279,7 +286,7 @@ namespace SuchByte.WindowsUtils.GUI
         private System.Windows.Forms.CheckBox checkCtrl;
         private System.Windows.Forms.CheckBox checkShift;
         private System.Windows.Forms.CheckBox checkAlt;
-        private System.Windows.Forms.ComboBox key;
+        private RoundedComboBox key;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

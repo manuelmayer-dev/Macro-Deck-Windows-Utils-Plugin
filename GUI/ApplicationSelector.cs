@@ -71,7 +71,7 @@ namespace SuchByte.WindowsUtils.GUI
                 CheckFileExists = false,
                 CheckPathExists = false,
                 DefaultExt = "exe",
-                Filter = "*.exe;*.ink|*.exe;*.ink",
+                Filter = "Applications (*.exe)|*.exe|Shortcuts (*.ink)|*.ink|All files (*.*)|*.*",
                 SupportMultiDottedExtensions = true,
                 ValidateNames = false,
                 DereferenceLinks = false,

@@ -7,14 +7,17 @@ using SuchByte.MacroDeck.Plugins;
 
 namespace SuchByte.WindowsUtils.GUI
 {
-    public partial class FolderSelector : ActionConfigControl
+    public partial class FileFolderSelector : ActionConfigControl
     {
 
         PluginAction pluginAction;
 
-        public FolderSelector(PluginAction pluginAction, ActionConfigurator actionConfigurator)
+        SelectType type;
+
+        public FileFolderSelector(PluginAction pluginAction, ActionConfigurator actionConfigurator, SelectType selectType)
         {
             this.pluginAction = pluginAction;
+            this.type = selectType;
             InitializeComponent();
 
             actionConfigurator.ActionSave += OnActionSave;
@@ -55,13 +58,26 @@ namespace SuchByte.WindowsUtils.GUI
             this.pluginAction.DisplayName = this.pluginAction.Name + " -> " + this.path.Text;
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void BtnBrowse_Click(object sender, EventArgs e)
+        {
+            switch (this.type)
+            {
+                case SelectType.FOLDER:
+                    this.ShowFolderBrowserDialog();
+                    break;
+                case SelectType.FILE:
+                    ShowOpenFileDialog();
+                    break;
+            }
+        }
+
+        private void ShowFolderBrowserDialog()
         {
             using (var folderBrowserDialog = new FolderBrowserDialog
             {
                 ShowNewFolderButton = true,
                 UseDescriptionForTitle = true,
-                Description = "Select a folder to open"
+                Description = "Select a folder to open",
             })
             {
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
@@ -70,5 +86,34 @@ namespace SuchByte.WindowsUtils.GUI
                 }
             }
         }
+
+        private void ShowOpenFileDialog()
+        {
+            using (var openFileDialog = new OpenFileDialog
+            {
+                Title = "Open file",
+                CheckFileExists = false,
+                CheckPathExists = false,
+                DefaultExt = "exe",
+                Filter = "All files (*.*)|*.*",
+                SupportMultiDottedExtensions = true,
+                ValidateNames = false,
+                DereferenceLinks = false,
+            })
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.path.Text = openFileDialog.FileName;
+                }
+            }
+        }
+    }
+
+
+
+    public enum SelectType
+    {
+        FOLDER,
+        FILE,
     }
 }

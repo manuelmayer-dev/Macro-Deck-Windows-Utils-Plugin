@@ -38,17 +38,16 @@ namespace SuchByte.WindowsUtils
         {
             this.Actions = new List<PluginAction>
             {
-                new StartApplicationAction(),
+                new OpenFileAction(),
                 new OpenFolderAction(),
+                new StartApplicationAction(),
                 new IncreaseVolumeAction(),
                 new DecreaseVolumeAction(),
                 new MuteVolumeAction(),
-
                 new WindowsExplorerControlAction(),
-                //new WebrequestAction(),
-                //new WindowsVolumeControlAction(),
-                //new WindowsOpenWebsiteAction(),
-                //new MultiHotkeyAction(),
+                //new WebrequestAction(), // TODO
+                //new WindowsOpenWebsiteAction(), // TODO
+                //new MultiHotkeyAction(), // TODO
                 new HotkeyAction(),
             };
         }

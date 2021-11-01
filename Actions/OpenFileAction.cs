@@ -11,14 +11,13 @@ using System.Text;
 
 namespace SuchByte.WindowsUtils.Actions
 {
-
-    public class OpenFolderAction : PluginAction
+    public class OpenFileAction : PluginAction
     {
-        public override string Name => "Open folder";
+        public override string Name => "Open file";
 
-        public override string DisplayName { get; set; } = "Open folder";
+        public override string DisplayName { get; set; } = "Open file";
 
-        public override string Description => "Opens a folder";
+        public override string Description => "Opens any file";
 
         public override bool CanConfigure => true;
 
@@ -46,7 +45,7 @@ namespace SuchByte.WindowsUtils.Actions
 
         public override ActionConfigControl GetActionConfigControl(ActionConfigurator actionConfigurator)
         {
-            return new FileFolderSelector(this, actionConfigurator, SelectType.FOLDER);
+            return new FileFolderSelector(this, actionConfigurator, SelectType.FILE);
         }
     }
 }

@@ -35,9 +35,6 @@ namespace SuchByte.WindowsUtils.Utils
         [DllImport("shell32.dll", EntryPoint = "#727")]
         public extern static int SHGetImageList(int iImageList, ref Guid riid, ref IImageList ppv);
 
-        [DllImport("user32.dll", EntryPoint = "DestroyIcon", SetLastError = true)]
-        public static unsafe extern int DestroyIcon(IntPtr hIcon);
-
         [DllImport("shell32.dll")]
         public static extern uint SHGetIDListFromObject([MarshalAs(UnmanagedType.IUnknown)] object iUnknown, out IntPtr ppidl);
 
@@ -53,8 +50,7 @@ namespace SuchByte.WindowsUtils.Utils
 
     public static class ShellIcon
     {
-        const string IID_IImageList = "46EB5926-582E-4017-9FDF-E8998DAA0950";
-        const string IID_IImageList2 = "192B9D83-50FC-457B-90A0-2B82A8B5DAE1";
+        const string IID_IImageList = "192B9D83-50FC-457B-90A0-2B82A8B5DAE1";
 
         [Flags]
         enum SHGFI : uint
@@ -332,11 +328,11 @@ namespace SuchByte.WindowsUtils.Utils
         public static IntPtr GetJumboIcon(int iImage)
         {
             IImageList spiml = null;
-            Guid guil = new Guid(IID_IImageList2);//or IID_IImageList
+            Guid guil = new Guid(IID_IImageList);
 
             Shell32.SHGetImageList(Shell32.SHIL_JUMBO, ref guil, ref spiml);
             IntPtr hIcon = IntPtr.Zero;
-            spiml.GetIcon(iImage, Shell32.ILD_TRANSPARENT | Shell32.ILD_IMAGE, ref hIcon); //
+            spiml.GetIcon(iImage, Shell32.ILD_TRANSPARENT | Shell32.ILD_IMAGE, ref hIcon);
 
             return hIcon;
         }

@@ -4,6 +4,7 @@ using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Icons;
 using SuchByte.MacroDeck.Plugins;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,10 @@ namespace SuchByte.WindowsUtils.GUI
         {
             this.pluginAction = pluginAction;
             InitializeComponent();
+
+            this.lblPath.Text = PluginLanguageManager.PluginStrings.Path;
+            this.lblArguments.Text = PluginLanguageManager.PluginStrings.Arguments;
+            this.lblChoose.Text = PluginLanguageManager.PluginStrings.ChooseAFileOrDragAndDrop;
 
             this.AllowDrop = true;
             this.DragEnter += ApplicationSelector_DragEnter;
@@ -58,7 +63,7 @@ namespace SuchByte.WindowsUtils.GUI
         {
             using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
             {
-                if (msgBox.ShowDialog("Import icon", "Do you want to import the file's icon?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, PluginLanguageManager.PluginStrings.QuestionImportFilesIcon, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     try
                     {

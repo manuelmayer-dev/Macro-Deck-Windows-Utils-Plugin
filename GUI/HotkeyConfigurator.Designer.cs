@@ -48,7 +48,6 @@ namespace SuchByte.WindowsUtils.GUI
             this.checkRWin = new System.Windows.Forms.CheckBox();
             this.checkLWin = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkCtrl
@@ -242,22 +241,10 @@ namespace SuchByte.WindowsUtils.GUI
             this.label4.TabIndex = 15;
             this.label4.Text = "+";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(184, 23);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Send a single hotkey";
-            // 
             // HotkeyConfigurator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.checkRWin);
             this.Controls.Add(this.checkLWin);
             this.Controls.Add(this.label4);
@@ -300,6 +287,5 @@ namespace SuchByte.WindowsUtils.GUI
         private System.Windows.Forms.CheckBox checkRWin;
         private System.Windows.Forms.CheckBox checkLWin;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
     }
 }

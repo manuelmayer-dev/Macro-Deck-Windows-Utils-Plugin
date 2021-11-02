@@ -30,7 +30,7 @@ namespace SuchByte.WindowsUtils.GUI
         private void InitializeComponent()
         {
             this.btnBrowse = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPath = new System.Windows.Forms.Label();
             this.path = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
             this.lblChoose = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -55,15 +55,15 @@ namespace SuchByte.WindowsUtils.GUI
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
             // 
-            // label1
+            // lblPath
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 121);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 29);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Path:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPath.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPath.Location = new System.Drawing.Point(3, 121);
+            this.lblPath.Name = "lblPath";
+            this.lblPath.Size = new System.Drawing.Size(83, 29);
+            this.lblPath.TabIndex = 4;
+            this.lblPath.Text = "Path:";
+            this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // path
             // 
@@ -100,7 +100,7 @@ namespace SuchByte.WindowsUtils.GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPath);
             this.Controls.Add(this.path);
             this.Name = "FileFolderSelector";
             this.ResumeLayout(false);
@@ -110,7 +110,7 @@ namespace SuchByte.WindowsUtils.GUI
         #endregion
 
         private MacroDeck.GUI.CustomControls.ButtonPrimary btnBrowse;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPath;
         private MacroDeck.GUI.CustomControls.RoundedTextBox path;
         private System.Windows.Forms.Label lblChoose;
     }

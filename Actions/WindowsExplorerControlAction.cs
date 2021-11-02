@@ -4,6 +4,7 @@ using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,11 +15,12 @@ namespace SuchByte.WindowsUtils.Actions
 {
     public class WindowsExplorerControlAction : PluginAction
     {
-        public override string Name => "Explorer control";
+        public override string Name => PluginLanguageManager.PluginStrings.ActionExplorerControl;
 
-        public override string Description => "Explorer/browser (back/forward/home/refresh)";
+        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionExplorerControl;
 
-        public override string DisplayName { get; set; } = "";
+        public override string Description => PluginLanguageManager.PluginStrings.ActionExplorerControlDescription;
+
         public override bool CanConfigure => true;
 
         private InputSimulator inputSimulator = new InputSimulator();

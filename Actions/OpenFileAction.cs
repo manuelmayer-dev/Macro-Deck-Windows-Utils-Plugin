@@ -4,6 +4,7 @@ using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,11 +14,11 @@ namespace SuchByte.WindowsUtils.Actions
 {
     public class OpenFileAction : PluginAction
     {
-        public override string Name => "Open file";
+        public override string Name => PluginLanguageManager.PluginStrings.ActionOpenFile;
 
-        public override string DisplayName { get; set; } = "Open file";
+        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionOpenFile;
 
-        public override string Description => "Opens any file";
+        public override string Description => PluginLanguageManager.PluginStrings.ActionOpenFile;
 
         public override bool CanConfigure => true;
 

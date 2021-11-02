@@ -3,6 +3,7 @@ using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,12 @@ namespace SuchByte.WindowsUtils.GUI
         {
             this.pluginAction = pluginAction;
             InitializeComponent();
+
+            this.lblAction.Text = PluginLanguageManager.PluginStrings.Action;
+            this.radioBack.Text = PluginLanguageManager.PluginStrings.Back;
+            this.radioForward.Text = PluginLanguageManager.PluginStrings.Forward;
+            this.radioHome.Text = PluginLanguageManager.PluginStrings.Home;
+            this.radioRefresh.Text = PluginLanguageManager.PluginStrings.Refresh;
 
             this.LoadConfig();
 

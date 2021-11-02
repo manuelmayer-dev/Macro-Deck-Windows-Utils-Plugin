@@ -4,6 +4,7 @@ using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,11 +16,11 @@ namespace SuchByte.WindowsUtils.Actions
 {
     public class HotkeyAction : PluginAction
     {
-        public override string Name => "Hotkey";
+        public override string Name => PluginLanguageManager.PluginStrings.ActionHotkey;
 
-        public override string Description => "Single hotkey";
+        public override string Description => PluginLanguageManager.PluginStrings.ActionHotkeyDescription;
 
-        public override string DisplayName { get; set; } = "Hotkey";
+        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionHotkey;
         public override bool CanConfigure => true;
 
 

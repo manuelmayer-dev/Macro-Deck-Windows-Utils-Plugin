@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<__Language__>German</__Language__>
+	<__LanguageCode__>de</__LanguageCode__>
+	<__Author__>Macro Deck</__Author__>
+
+	<ActionDecreaseVolume>Lautstärke reduzieren</ActionDecreaseVolume>
+	<ActionDecreaseVolumeDescription>Lautstärke des Standardausgabegerätes reduzieren</ActionDecreaseVolumeDescription>
+	<ActionIncreaseVolume>Lautstärke erhöhen</ActionIncreaseVolume>
+	<ActionIncreaseVolumeDescription>Lautstärke des Standardausgabegerätes erhöhen</ActionIncreaseVolumeDescription>
+	<ActionMuteVolume>Lautstärke stummschalten</ActionMuteVolume>
+	<ActionMuteVolumeDescription>Standardausgabegerätes stummschalten</ActionMuteVolumeDescription>
+	<ActionHotkey>Tastenkombination</ActionHotkey>
+	<ActionHotkeyDescription>Einzelne Tastaturkombination senden</ActionHotkeyDescription>
+	<ActionOpenFile>Datei öffnen</ActionOpenFile>
+	<ActionOpenFileDescription>Öffnet eine eingestellte Datei</ActionOpenFileDescription>
+	<ActionOpenFolder>Ordner öffnen</ActionOpenFolder>
+	<ActionOpenFolderDescription>Öffnet einen eingestellten Ordner</ActionOpenFolderDescription>
+	<ActionStartApplication>Anwendung starten</ActionStartApplication>
+	<ActionStartApplicationDescription>Startet eine Anwendung; Optional: mit Startparametern</ActionStartApplicationDescription>
+	<ActionExplorerControl>Explorersteuerung</ActionExplorerControl>
+	<ActionExplorerControlDescription>Explorer/Internetbrowser (zurück/vor/startseite/neuladen)</ActionExplorerControlDescription>
+	<Path>Pfad</Path>
+	<Arguments>Startparameter</Arguments>
+	<ChooseAFileOrDragAndDrop>Eine Datei auswählen oder per Drag&amp;Drop hier hier ablegen</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>Einen Ordner auswählen oder per Drag&amp;Drop hier hier ablegen</ChooseAFolderOrDragAndDrop>
+	<QuestionImportFilesIcon>Soll das Icon der Datei importiert werden?</QuestionImportFilesIcon>
+	<QuestionImportFileTypesIcon>Soll das Icon des Dateityps import werden?</QuestionImportFileTypesIcon>
+	<ImportIcon>Icon importieren</ImportIcon>
+	<Action>Aktion</Action>
+	<Back>Zurück</Back>
+	<Forward>Vorwärts</Forward>
+	<Home>Startseite</Home>
+	<Refresh>Neuladen</Refresh>
+	<SelectedPathNotAFile>Der ausgewählte Pfad ist keine gültige Datei</SelectedPathNotAFile>
+	<SelectedPathNotAFolder>Der ausgewählte Pfad ist kein gültiger Ordner</SelectedPathNotAFolder>
+</PluginStrings>

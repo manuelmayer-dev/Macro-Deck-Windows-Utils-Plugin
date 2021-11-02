@@ -13,6 +13,9 @@
 - The file name and the __Language__ node must be the same and match the language names in Macro Deck, which you can find [here](https://github.com/SuchByte/Macro-Deck/tree/master/Language)
 
 ## Example
+```
+English.xml
+```
 ```xml
 <?xml version="1.0"?>
 <PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<__Language__>English</__Language__>
+	<__LanguageCode__>en</__LanguageCode__>
+	<__Author__>Macro Deck</__Author__>
+
+	<ActionDecreaseVolume>Decrease volume</ActionDecreaseVolume>
+	<ActionDecreaseVolumeDescription>Decrease the volume of the current playback device</ActionDecreaseVolumeDescription>
+	<ActionIncreaseVolume>Increase volume</ActionIncreaseVolume>
+	<ActionIncreaseVolumeDescription>Increase the volume of the current playback device</ActionIncreaseVolumeDescription>
+	<ActionMuteVolume>Mute volume</ActionMuteVolume>
+	<ActionMuteVolumeDescription>Mute the current playback device</ActionMuteVolumeDescription>
+	<ActionHotkey>Hotkey</ActionHotkey>
+	<ActionHotkeyDescription>Send a single hotkey</ActionHotkeyDescription>
+	<ActionOpenFile>Open file</ActionOpenFile>
+	<ActionOpenFileDescription>Open any file</ActionOpenFileDescription>
+	<ActionOpenFolder>Open folder</ActionOpenFolder>
+	<ActionOpenFolderDescription>Open a folder</ActionOpenFolderDescription>
+	<ActionStartApplication>Start application</ActionStartApplication>
+	<ActionStartApplicationDescription>Start a application with and without start arguments</ActionStartApplicationDescription>
+	<ActionExplorerControl>Explorer control</ActionExplorerControl>
+	<ActionExplorerControlDescription>Explorer/browser (back/forward/home/refresh)</ActionExplorerControlDescription>
+	<Path>Path</Path>
+	<Arguments>Arguments</Arguments>
+	<ChooseAFileOrDragAndDrop>Choose a file or drag and drop it here</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>Choose a folder or drag and drop it here</ChooseAFolderOrDragAndDrop>
+	<QuestionImportFilesIcon>Do you want to import the file's icon?</QuestionImportFilesIcon>
+	<QuestionImportFileTypesIcon>Do you want to import icon of the file type?</QuestionImportFileTypesIcon>
+	<ImportIcon>Import icon</ImportIcon>
+	<Action>Action</Action>
+	<Back>Back</Back>
+	<Forward>Forward</Forward>
+	<Home>Home</Home>
+	<Refresh>Refresh</Refresh>
+	<SelectedPathNotAFile>The selected path is not a valid file</SelectedPathNotAFile>
+	<SelectedPathNotAFolder>The selected path is not a valid folder</SelectedPathNotAFolder>
+</PluginStrings>

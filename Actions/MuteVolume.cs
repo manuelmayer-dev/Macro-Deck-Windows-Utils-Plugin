@@ -1,5 +1,6 @@
 ﻿using SuchByte.MacroDeck.ActionButton;
 using SuchByte.MacroDeck.Plugins;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -12,11 +13,11 @@ namespace SuchByte.WindowsUtils.Actions
     public class MuteVolumeAction : PluginAction
     {
 
-        public override string Name => "Mute volume";
+        public override string Name => PluginLanguageManager.PluginStrings.ActionMuteVolume;
 
-        public override string DisplayName { get; set; } = "Mute volume";
+        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionMuteVolume;
 
-        public override string Description => "Mute the current playback device";
+        public override string Description => PluginLanguageManager.PluginStrings.ActionMuteVolumeDescription;
 
         public override void Trigger(string clientId, ActionButton actionButton)
         {

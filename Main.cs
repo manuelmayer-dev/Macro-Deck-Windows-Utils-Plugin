@@ -5,6 +5,7 @@ using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.Actions;
 using SuchByte.WindowsUtils.GUI;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,6 +37,7 @@ namespace SuchByte.WindowsUtils
 
         public override void Enable()
         {
+            PluginLanguageManager.Initialize();
             this.Actions = new List<PluginAction>
             {
                 new OpenFileAction(),

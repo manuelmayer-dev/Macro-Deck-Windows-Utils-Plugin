@@ -5,7 +5,9 @@ using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
+using SuchByte.MacroDeck.Language;
 using SuchByte.MacroDeck.Plugins;
+using SuchByte.WindowsUtils.Language;
 
 namespace SuchByte.WindowsUtils.GUI
 {
@@ -22,13 +24,15 @@ namespace SuchByte.WindowsUtils.GUI
             this.type = selectType;
             InitializeComponent();
 
+            this.lblPath.Text = PluginLanguageManager.PluginStrings.Path;
+
             switch (this.type)
             {
                 case SelectType.FOLDER:
-                    this.lblChoose.Text = "Choose a folder or drag and drop it here";
+                    this.lblChoose.Text = PluginLanguageManager.PluginStrings.ChooseAFolderOrDragAndDrop;
                     break;
                 case SelectType.FILE:
-                    this.lblChoose.Text = "Choose a file or drag and drop it here";
+                    this.lblChoose.Text = PluginLanguageManager.PluginStrings.ChooseAFileOrDragAndDrop;
                     break;
             }
 
@@ -66,7 +70,7 @@ namespace SuchByte.WindowsUtils.GUI
             {
                 using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
                 {
-                    if (msgBox.ShowDialog("Import icon", "Do you want to import icon of the file type?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, PluginLanguageManager.PluginStrings.QuestionImportFileTypesIcon, MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         try
                         {
@@ -103,23 +107,21 @@ namespace SuchByte.WindowsUtils.GUI
             FileAttributes attr = File.GetAttributes(this.path.Text);
             if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
             {
-                Debug.WriteLine("folder");
                 if (this.type == SelectType.FILE)
                 {
                     using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
                     {
-                        msgBox.ShowDialog("Error", "The selected path is not a valid file.", MessageBoxButtons.OK);
+                        msgBox.ShowDialog(LanguageManager.Strings.Error, PluginLanguageManager.PluginStrings.SelectedPathNotAFile, MessageBoxButtons.OK);
                     }
                     return;
                 }
             } else
             {
-                Debug.WriteLine("file");
                 if (this.type == SelectType.FOLDER)
                 {
                     using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
                     {
-                        msgBox.ShowDialog("Error", "The selected path is not a valid folder.", MessageBoxButtons.OK);
+                        msgBox.ShowDialog(LanguageManager.Strings.Error, PluginLanguageManager.PluginStrings.SelectedPathNotAFolder, MessageBoxButtons.OK);
                     }
                     return;
                 }
@@ -155,7 +157,6 @@ namespace SuchByte.WindowsUtils.GUI
             {
                 ShowNewFolderButton = true,
                 UseDescriptionForTitle = true,
-                Description = "Select a folder to open",
             })
             {
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
@@ -169,10 +170,8 @@ namespace SuchByte.WindowsUtils.GUI
         {
             using (var openFileDialog = new OpenFileDialog
             {
-                Title = "Open file",
                 CheckFileExists = false,
                 CheckPathExists = false,
-                DefaultExt = "exe",
                 Filter = "All files (*.*)|*.*",
                 SupportMultiDottedExtensions = true,
                 ValidateNames = false,

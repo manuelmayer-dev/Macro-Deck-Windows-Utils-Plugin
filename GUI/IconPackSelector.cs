@@ -1,5 +1,6 @@
 ﻿using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Icons;
+using SuchByte.MacroDeck.Language;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,8 @@ namespace SuchByte.WindowsUtils.GUI
         public IconPackSelector()
         {
             InitializeComponent();
+
+            this.btnOk.Text = LanguageManager.Strings.Ok;
 
             if (IconManager.IconPacks.FindAll(i => !i.PackageManagerManaged).Count == 0)
             {

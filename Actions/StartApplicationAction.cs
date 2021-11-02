@@ -4,6 +4,7 @@ using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,11 +14,11 @@ namespace SuchByte.WindowsUtils.Actions
 {
     public class StartApplicationAction : PluginAction
     {
-        public override string Name => "Start application";
+        public override string Name => PluginLanguageManager.PluginStrings.ActionStartApplication;
 
-        public override string DisplayName { get; set; } = "Start application";
+        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionStartApplication;
 
-        public override string Description => "Start a application with and without start arguments";
+        public override string Description => PluginLanguageManager.PluginStrings.ActionStartApplicationDescription;
 
         public override bool CanConfigure => true;
 

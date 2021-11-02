@@ -32,9 +32,9 @@ namespace SuchByte.WindowsUtils.GUI
         private void InitializeComponent()
         {
             this.path = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPath = new System.Windows.Forms.Label();
             this.btnBrowse = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblArguments = new System.Windows.Forms.Label();
             this.arguments = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
             this.lblChoose = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -58,15 +58,15 @@ namespace SuchByte.WindowsUtils.GUI
             this.path.TabIndex = 0;
             this.path.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // label1
+            // lblPath
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Path:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPath.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPath.Location = new System.Drawing.Point(3, 81);
+            this.lblPath.Name = "lblPath";
+            this.lblPath.Size = new System.Drawing.Size(83, 29);
+            this.lblPath.TabIndex = 1;
+            this.lblPath.Text = "Path:";
+            this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnBrowse
             // 
@@ -88,15 +88,15 @@ namespace SuchByte.WindowsUtils.GUI
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
             // 
-            // label2
+            // lblArguments
             // 
-            this.label2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(3, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 29);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Arguments:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArguments.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblArguments.Location = new System.Drawing.Point(3, 116);
+            this.lblArguments.Name = "lblArguments";
+            this.lblArguments.Size = new System.Drawing.Size(113, 29);
+            this.lblArguments.TabIndex = 3;
+            this.lblArguments.Text = "Arguments:";
+            this.lblArguments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // arguments
             // 
@@ -133,9 +133,9 @@ namespace SuchByte.WindowsUtils.GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.arguments);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblArguments);
             this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPath);
             this.Controls.Add(this.path);
             this.Name = "ApplicationSelector";
             this.ResumeLayout(false);
@@ -145,9 +145,9 @@ namespace SuchByte.WindowsUtils.GUI
         #endregion
 
         private RoundedTextBox path;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPath;
         private ButtonPrimary btnBrowse;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblArguments;
         private RoundedTextBox arguments;
         private System.Windows.Forms.Label lblChoose;
     }

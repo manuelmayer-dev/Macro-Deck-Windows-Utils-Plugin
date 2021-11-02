@@ -4,6 +4,7 @@ using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,11 +15,11 @@ namespace SuchByte.WindowsUtils.Actions
 
     public class OpenFolderAction : PluginAction
     {
-        public override string Name => "Open folder";
+        public override string Name => PluginLanguageManager.PluginStrings.ActionOpenFolder;
 
-        public override string DisplayName { get; set; } = "Open folder";
+        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionOpenFolder;
 
-        public override string Description => "Opens a folder";
+        public override string Description => PluginLanguageManager.PluginStrings.ActionOpenFolderDescription;
 
         public override bool CanConfigure => true;
 

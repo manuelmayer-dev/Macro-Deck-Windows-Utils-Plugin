@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using SuchByte.WindowsUtils.GUI;
+using System.Diagnostics;
 
 namespace SuchByte.WindowsUtils.Utils
 {
@@ -21,64 +22,68 @@ namespace SuchByte.WindowsUtils.Utils
                     Image icon;
 
 
-                    IntPtr hIcon = ShellIcon.GetJumboIcon(Utils.ShellIcon.GetIconIndex(filePath));
+                    IntPtr hIcon = ShellIcon.GetJumboIcon(ShellIcon.GetIconIndex(filePath));
 
                     using (System.Drawing.Icon ico = (System.Drawing.Icon)System.Drawing.Icon.FromHandle(hIcon).Clone())
                     {
                         icon = ico.ToBitmap();
-                    }
 
-                    Cursor.Current = Cursors.WaitCursor;
-                    try
-                    {
-                        var file = Path.Combine(MacroDeck.MacroDeck.TempDirectoryPath, "fileicon.original");
-                        icon.Save(file, ImageFormat.Png);
-                        using (var collection = new MagickImageCollection(new FileInfo(file)))
+                        Debug.WriteLine(icon.Height);
+
+                        Cursor.Current = Cursors.WaitCursor;
+                        try
                         {
-                            collection.Coalesce();
-                            if (iconImportQuality.Pixels >= 0)
+                            var file = Path.Combine(MacroDeck.MacroDeck.TempDirectoryPath, "fileicon.original");
+                            icon.Save(file, ImageFormat.Png);
+                            using (var collection = new MagickImageCollection(new FileInfo(file)))
                             {
-                                foreach (var image in collection)
+                                collection.Coalesce();
+                                if (iconImportQuality.Pixels >= 0)
                                 {
-                                    image.Resize(iconImportQuality.Pixels, iconImportQuality.Pixels);
-                                    image.Quality = 100;
-                                    image.Crop(iconImportQuality.Pixels, iconImportQuality.Pixels);
+                                    foreach (var image in collection)
+                                    {
+                                        image.Resize(iconImportQuality.Pixels, iconImportQuality.Pixels);
+                                        image.Quality = 100;
+                                        image.Crop(iconImportQuality.Pixels, iconImportQuality.Pixels);
+                                    }
+                                }
+                                collection.Write(MacroDeck.MacroDeck.TempDirectoryPath + new FileInfo(file).Name + ".resized");
+                                byte[] imageBytes = File.ReadAllBytes(MacroDeck.MacroDeck.TempDirectoryPath + new FileInfo(file).Name + ".resized");
+                                using (var ms = new MemoryStream(imageBytes))
+                                {
+                                    icon = Image.FromStream(ms);
                                 }
                             }
-                            collection.Write(MacroDeck.MacroDeck.TempDirectoryPath + new FileInfo(file).Name + ".resized");
-                            byte[] imageBytes = File.ReadAllBytes(MacroDeck.MacroDeck.TempDirectoryPath + new FileInfo(file).Name + ".resized");
-                            using (var ms = new MemoryStream(imageBytes))
+                        }
+                        catch { }
+                        Cursor.Current = Cursors.Default;
+
+                        Debug.WriteLine(icon.Height);
+
+                        if (icon == null)
+                        {
+                            using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
                             {
-                                icon = Image.FromStream(ms);
+                                msgBox.ShowDialog("Import icon", "Failed to import the icon", MessageBoxButtons.OK);
                             }
+                            return;
                         }
-                    }
-                    catch { }
-                    Cursor.Current = Cursors.Default;
 
-                    if (icon == null)
-                    {
-                        using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                        using (var iconPackSelector = new IconPackSelector())
                         {
-                            msgBox.ShowDialog("Import icon", "Failed to import the icon", MessageBoxButtons.OK);
-                        }
-                        return;
-                    }
-
-                    using (var iconPackSelector = new IconPackSelector())
-                    {
-                        if (iconPackSelector.ShowDialog() == DialogResult.OK)
-                        {
-                            try
+                            if (iconPackSelector.ShowDialog() == DialogResult.OK)
                             {
-                                IconPack iconPack = IconManager.GetIconPackByName(iconPackSelector.IconPack);
-                                IconManager.AddIconImage(iconPack, icon);
-                                using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                                try
                                 {
-                                    msgBox.ShowDialog("Import icon", "Icon successfully imported to " + iconPackSelector.IconPack, MessageBoxButtons.OK);
+                                    IconPack iconPack = IconManager.GetIconPackByName(iconPackSelector.IconPack);
+                                    IconManager.AddIconImage(iconPack, icon);
+                                    using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                                    {
+                                        msgBox.ShowDialog("Import icon", "Icon successfully imported to " + iconPackSelector.IconPack, MessageBoxButtons.OK);
+                                    }
                                 }
+                                catch { }
                             }
-                            catch { }
                         }
                     }
                 }

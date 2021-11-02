@@ -1,5 +1,6 @@
 ﻿using SuchByte.MacroDeck.ActionButton;
 using SuchByte.MacroDeck.Plugins;
+using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -12,11 +13,11 @@ namespace SuchByte.WindowsUtils.Actions
     public class DecreaseVolumeAction : PluginAction
     {
 
-        public override string Name => "Decrease volume";
+        public override string Name => PluginLanguageManager.PluginStrings.ActionDecreaseVolume;
 
-        public override string DisplayName { get; set; } = "Decrease volume";
+        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionDecreaseVolume;
 
-        public override string Description => "Decrease the volume of the current playback device";
+        public override string Description => PluginLanguageManager.PluginStrings.ActionDecreaseVolumeDescription;
 
         public override void Trigger(string clientId, ActionButton actionButton)
         {

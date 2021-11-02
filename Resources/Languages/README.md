@@ -8,9 +8,9 @@
 - Create a pull request of the forked repository
 
 ## Important!
-- Please use the ISO names for the file name and for the __Language__ node in the file. For __LanguageCode__ use the ISO-639-1 code. You can find more information here: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+- Please use the ISO names for the file name and for the `<__Language__>` node in the file. For `<__LanguageCode__>` use the ISO-639-1 code. You can find more information here: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
-- The file name and the __Language__ node must be the same and match the language names in Macro Deck, which you can find [here](https://github.com/SuchByte/Macro-Deck/tree/master/Language)
+- The file name and the `<__Language__>` node must be the same and match the language names in Macro Deck, which you can find [here](https://github.com/SuchByte/Macro-Deck/tree/master/Language)
 
 ## Example
 ```

@@ -17,8 +17,16 @@ namespace SuchByte.WindowsUtils.Language
     {
         public static PluginStrings PluginStrings = new PluginStrings();
 
+        
+
 
         public static void Initialize()
+        {
+            LoadLanguage();
+            LanguageManager.LanguageChanged += (s, e) => LoadLanguage();
+        }
+
+        private static void LoadLanguage()
         {
             // Getting the current language that is set in Macro Deck
             string languageName = LanguageManager.GetLanguageName();

@@ -22,8 +22,8 @@
 	<ActionExplorerControlDescription>Explorer/Internetbrowser (zurück/vor/startseite/neuladen)</ActionExplorerControlDescription>
 	<Path>Pfad</Path>
 	<Arguments>Startparameter</Arguments>
-	<ChooseAFileOrDragAndDrop>Eine Datei auswählen oder per Drag&amp;Drop hier hier ablegen</ChooseAFileOrDragAndDrop>
-	<ChooseAFolderOrDragAndDrop>Einen Ordner auswählen oder per Drag&amp;Drop hier hier ablegen</ChooseAFolderOrDragAndDrop>
+	<ChooseAFileOrDragAndDrop>Eine Datei auswählen oder per Drag n' Drop hier hier ablegen</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>Einen Ordner auswählen oder per Drag n' Drop hier hier ablegen</ChooseAFolderOrDragAndDrop>
 	<QuestionImportFilesIcon>Soll das Icon der Datei importiert werden?</QuestionImportFilesIcon>
 	<QuestionImportFileTypesIcon>Soll das Icon des Dateityps import werden?</QuestionImportFileTypesIcon>
 	<ImportIcon>Icon importieren</ImportIcon>

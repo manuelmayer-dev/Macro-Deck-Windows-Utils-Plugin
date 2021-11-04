@@ -15,8 +15,6 @@ namespace SuchByte.WindowsUtils.Actions
 
         public override string Name => PluginLanguageManager.PluginStrings.ActionMuteVolume;
 
-        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionMuteVolume;
-
         public override string Description => PluginLanguageManager.PluginStrings.ActionMuteVolumeDescription;
 
         public override void Trigger(string clientId, ActionButton actionButton)

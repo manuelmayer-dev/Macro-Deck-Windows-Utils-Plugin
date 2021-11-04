@@ -16,8 +16,6 @@ namespace SuchByte.WindowsUtils.Actions
     {
         public override string Name => PluginLanguageManager.PluginStrings.ActionOpenFile;
 
-        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionOpenFile;
-
         public override string Description => PluginLanguageManager.PluginStrings.ActionOpenFile;
 
         public override bool CanConfigure => true;

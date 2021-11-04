@@ -15,8 +15,6 @@ namespace SuchByte.WindowsUtils.Actions
 
         public override string Name => PluginLanguageManager.PluginStrings.ActionDecreaseVolume;
 
-        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionDecreaseVolume;
-
         public override string Description => PluginLanguageManager.PluginStrings.ActionDecreaseVolumeDescription;
 
         public override void Trigger(string clientId, ActionButton actionButton)

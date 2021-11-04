@@ -20,7 +20,6 @@ namespace SuchByte.WindowsUtils.Actions
 
         public override string Description => PluginLanguageManager.PluginStrings.ActionHotkeyDescription;
 
-        public override string DisplayName { get; set; } = PluginLanguageManager.PluginStrings.ActionHotkey;
         public override bool CanConfigure => true;
 
 

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<__Language__>French</__Language__>
+	<__LanguageCode__>fr</__LanguageCode__>
+	<__Author__>Benjiiben53</__Author__>
+
+	<ActionDecreaseVolume>Baisser le volume</ActionDecreaseVolume>
+	<ActionDecreaseVolumeDescription>Baisser le volume de l'appareil de lecture actuel</ActionDecreaseVolumeDescription>
+	<ActionIncreaseVolume>Augementer le volume</ActionIncreaseVolume>
+	<ActionIncreaseVolumeDescription>Augementer le volume de l'appareil de lecture actuel</ActionIncreaseVolumeDescription>
+	<ActionMuteVolume>Couper le son</ActionMuteVolume>
+	<ActionMuteVolumeDescription>Couper le son de l'appareil de lecture actuel</ActionMuteVolumeDescription>
+	<ActionHotkey>Touche de raccourci</ActionHotkey>
+	<ActionHotkeyDescription>Envoyer un seul raccourci clavier</ActionHotkeyDescription>
+	<ActionOpenFile>Ouvrir un fichier</ActionOpenFile>
+	<ActionOpenFileDescription>Ouvrir un fichier</ActionOpenFileDescription>
+	<ActionOpenFolder>Ouvrir un dossier</ActionOpenFolder>
+	<ActionOpenFolderDescription>Ouvrir un dossier</ActionOpenFolderDescription>
+	<ActionStartApplication>Démarrer l'application</ActionStartApplication>
+	<ActionStartApplicationDescription>Démarrer une application avec et sans arguments de démarrage</ActionStartApplicationDescription>
+	<ActionExplorerControl>Contrôle de l'explorateur</ActionExplorerControl>
+	<ActionExplorerControlDescription>Explorateur/navigateur (retour/avance/accueil/rafraîchir)</ActionExplorerControlDescription>
+	<Path>Chemin</Path>
+	<Arguments>Arguments</Arguments>
+	<ChooseAFileOrDragAndDrop>Choisissez un fichier ou glissez-déposez-le ici</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>Choisissez un dossier ou glissez-déposez-le ici</ChooseAFolderOrDragAndDrop>
+	<QuestionImportFilesIcon>Voulez-vous importer l'icône du fichier ?</QuestionImportFilesIcon>
+	<QuestionImportFileTypesIcon>Voulez-vous importer l'icône du type de fichier ?</QuestionImportFileTypesIcon>
+	<ImportIcon>Importer une icône</ImportIcon>
+	<Action>Action</Action>
+	<Back>Retour</Back>
+	<Forward>Avant</Forward>
+	<Home>Accueil</Home>
+	<Refresh>Rafraîchir</Refresh>
+	<SelectedPathNotAFile>Le chemin sélectionné n'est pas un fichier valide</SelectedPathNotAFile>
+	<SelectedPathNotAFolder>Le chemin sélectionné n'est pas un dossier valide</SelectedPathNotAFolder>
+</PluginStrings>

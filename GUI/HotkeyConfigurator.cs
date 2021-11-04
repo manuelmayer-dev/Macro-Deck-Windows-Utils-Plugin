@@ -24,14 +24,38 @@ namespace SuchByte.WindowsUtils.GUI
             this.pluginAction = pluginAction;
             InitializeComponent();
 
-            actionConfigurator.ActionSave += OnActionSave;
-
             this.LoadConfig();
         }
 
-        private void OnActionSave(object sender, EventArgs e)
+        public override bool OnActionSave()
         {
-            this.UpdateConfig();
+            JObject jObject = new JObject
+            {
+                ["lwin"] = checkLWin.Checked.ToString(),
+                ["rwin"] = checkRWin.Checked.ToString(),
+                ["ctrl"] = checkCtrl.Checked.ToString(),
+                ["lctrl"] = checkLCtrl.Checked.ToString(),
+                ["rctrl"] = checkRCtrl.Checked.ToString(),
+                ["shift"] = checkShift.Checked.ToString(),
+                ["lshift"] = checkLShift.Checked.ToString(),
+                ["rshift"] = checkRShift.Checked.ToString(),
+                ["alt"] = checkAlt.Checked.ToString(),
+                ["lalt"] = checkLAlt.Checked.ToString(),
+                ["ralt"] = checkRAlt.Checked.ToString(),
+                ["key"] = this.key.Text.ToString()
+            };
+            if (this.key.Text.Length > 0)
+            {
+                this.pluginAction.Configuration = jObject.ToString();
+            }
+            this.pluginAction.ConfigurationSummary = 
+                (checkLWin.Checked ? "lwin + " : "") + (checkRWin.Checked ? "rwin + " : "") +
+                (checkLCtrl.Checked ? "lctrl + " : "") + (checkRCtrl.Checked ? "rctrl + " : "") + (checkCtrl.Checked ? "ctrl + " : "") +
+                (checkLShift.Checked ? "lshift + " : "") + (checkRShift.Checked ? "rshift + " : "") + (checkShift.Checked ? "shift + " : "") +
+                (checkLAlt.Checked ? "lalt + " : "") + (checkRAlt.Checked ? "ralt + " : "") + (checkAlt.Checked ? "alt + " : "") +
+                key.Text;
+
+            return true;
         }
 
 
@@ -74,33 +98,5 @@ namespace SuchByte.WindowsUtils.GUI
             p.Start();
         }
 
-        private void UpdateConfig()
-        {
-            JObject jObject = new JObject
-            {
-                ["lwin"] = checkLWin.Checked.ToString(),
-                ["rwin"] = checkRWin.Checked.ToString(),
-                ["ctrl"] = checkCtrl.Checked.ToString(),
-                ["lctrl"] = checkLCtrl.Checked.ToString(),
-                ["rctrl"] = checkRCtrl.Checked.ToString(),
-                ["shift"] = checkShift.Checked.ToString(),
-                ["lshift"] = checkLShift.Checked.ToString(),
-                ["rshift"] = checkRShift.Checked.ToString(),
-                ["alt"] = checkAlt.Checked.ToString(),
-                ["lalt"] = checkLAlt.Checked.ToString(),
-                ["ralt"] = checkRAlt.Checked.ToString(),
-                ["key"] = this.key.Text.ToString()
-            };
-            if (this.key.Text.Length > 0)
-            {
-                this.pluginAction.Configuration = jObject.ToString();
-            }
-            this.pluginAction.DisplayName = this.pluginAction.Name + " -> " +
-                (checkLWin.Checked ? "lwin + " : "") + (checkRWin.Checked ? "rwin + " : "") +
-                (checkLCtrl.Checked ? "lctrl + " : "") + (checkRCtrl.Checked ? "rctrl + " : "") + (checkCtrl.Checked ? "ctrl + " : "") + 
-                (checkLShift.Checked ? "lshift + " : "") + (checkRShift.Checked ? "rshift + " : "") + (checkShift.Checked ? "shift + " : "") +
-                (checkLAlt.Checked ? "lalt + " : "") + (checkRAlt.Checked ? "ralt + " : "") + (checkAlt.Checked ? "alt + " : "") +
-                key.Text;
-        }
     }
 }

@@ -47,10 +47,10 @@ namespace SuchByte.WindowsUtils.Utils
             uint uFlags
         );
     }
-
+    
     public static class ShellIcon
     {
-        const string IID_IImageList = "192B9D83-50FC-457B-90A0-2B82A8B5DAE1";
+        const string IID_IImageList = "46EB5926-582E-4017-9FDF-E8998DAA0950";
 
         [Flags]
         enum SHGFI : uint
@@ -319,7 +319,7 @@ namespace SuchByte.WindowsUtils.Utils
             Shell32.SHGetFileInfo(pszFile
                 , 0
                 , ref sfi
-                , (uint)System.Runtime.InteropServices.Marshal.SizeOf(sfi)
+                , (uint)Marshal.SizeOf(sfi)
                 , (uint)(SHGFI.SysIconIndex | SHGFI.LargeIcon | SHGFI.UseFileAttributes));
             return sfi.iIcon;
         }

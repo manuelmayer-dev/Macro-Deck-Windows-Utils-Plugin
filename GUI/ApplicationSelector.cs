@@ -21,10 +21,12 @@ namespace SuchByte.WindowsUtils.GUI
     {
 
         PluginAction pluginAction;
+        ActionConfigurator actionConfigurator;
 
         public ApplicationSelector(PluginAction pluginAction, ActionConfigurator actionConfigurator)
         {
             this.pluginAction = pluginAction;
+            this.actionConfigurator = actionConfigurator;
             InitializeComponent();
 
             this.lblPath.Text = PluginLanguageManager.PluginStrings.Path;
@@ -34,8 +36,6 @@ namespace SuchByte.WindowsUtils.GUI
             this.AllowDrop = true;
             this.DragEnter += ApplicationSelector_DragEnter;
             this.DragDrop += ApplicationSelector_DragDrop;
-
-            actionConfigurator.ActionSave += OnActionSave;
 
             this.LoadConfig();
         }
@@ -59,8 +59,12 @@ namespace SuchByte.WindowsUtils.GUI
             }
         }
 
-        private void OnActionSave(object sender, EventArgs e)
+        public override bool OnActionSave()
         {
+            if (String.IsNullOrWhiteSpace(this.path.Text))
+            {
+                return false;
+            }
             using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
             {
                 if (msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, PluginLanguageManager.PluginStrings.QuestionImportFilesIcon, MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -68,10 +72,23 @@ namespace SuchByte.WindowsUtils.GUI
                     try
                     {
                         Utils.FileIconImport.ImportIcon(this.path.Text);
-                    } catch { }
+                    }
+                    catch { }
                 }
-                this.UpdateConfig();
+                JObject configurationObject = JObject.FromObject(new
+                {
+                    path = this.path.Text,
+                    arguments = this.arguments.Text,
+                });
+                this.pluginAction.Configuration = configurationObject.ToString();
+                this.pluginAction.ConfigurationSummary = this.path.Text + (!String.IsNullOrWhiteSpace(this.arguments.Text) ? (" -> " + this.arguments.Text) : "");
             }
+            return true;
+        }
+
+        private void OnActionSave(object sender, EventArgs e)
+        {
+            
         }
 
 
@@ -87,21 +104,6 @@ namespace SuchByte.WindowsUtils.GUI
                 }
                 catch { }
             }
-        }
-
-        private void UpdateConfig()
-        {
-            if (String.IsNullOrWhiteSpace(this.path.Text))
-            {
-                return;
-            }
-            JObject configurationObject = JObject.FromObject(new
-            {
-                path = this.path.Text,
-                arguments = this.arguments.Text,
-            });
-            this.pluginAction.Configuration = configurationObject.ToString();
-            this.pluginAction.DisplayName = this.pluginAction.Name + " -> " + this.path.Text + (!String.IsNullOrWhiteSpace(this.arguments.Text) ? (" -> " + this.arguments.Text) : "");
         }
 
         private void BtnBrowse_Click(object sender, EventArgs e)

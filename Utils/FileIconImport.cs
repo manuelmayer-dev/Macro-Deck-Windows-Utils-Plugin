@@ -24,11 +24,9 @@ namespace SuchByte.WindowsUtils.Utils
 
                     IntPtr hIcon = ShellIcon.GetJumboIcon(ShellIcon.GetIconIndex(filePath));
 
-                    using (System.Drawing.Icon ico = (System.Drawing.Icon)System.Drawing.Icon.FromHandle(hIcon).Clone())
+                    using (System.Drawing.Icon ico = System.Drawing.Icon.ExtractAssociatedIcon(filePath))
                     {
                         icon = ico.ToBitmap();
-
-                        Debug.WriteLine(icon.Height);
 
                         Cursor.Current = Cursors.WaitCursor;
                         try
@@ -58,7 +56,6 @@ namespace SuchByte.WindowsUtils.Utils
                         catch { }
                         Cursor.Current = Cursors.Default;
 
-                        Debug.WriteLine(icon.Height);
 
                         if (icon == null)
                         {

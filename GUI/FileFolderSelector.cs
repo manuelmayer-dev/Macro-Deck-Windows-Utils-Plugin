@@ -41,7 +41,6 @@ namespace SuchByte.WindowsUtils.GUI
             this.DragEnter += FileFolderSelector_DragEnter;
             this.DragDrop += FileFolderSelector_DragDrop;
 
-            actionConfigurator.ActionSave += OnActionSave;
 
             this.LoadConfig();
         }
@@ -64,8 +63,12 @@ namespace SuchByte.WindowsUtils.GUI
             }
         }
 
-        private void OnActionSave(object sender, EventArgs e)
+        public override bool OnActionSave()
         {
+            if (String.IsNullOrWhiteSpace(this.path.Text))
+            {
+                return false;
+            }
             if (this.type != SelectType.FOLDER)
             {
                 using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
@@ -80,8 +83,40 @@ namespace SuchByte.WindowsUtils.GUI
                     }
                 }
             }
-            this.UpdateConfig();
+            FileAttributes attr = File.GetAttributes(this.path.Text);
+            if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+            {
+                if (this.type == SelectType.FILE)
+                {
+                    using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                    {
+                        msgBox.ShowDialog(LanguageManager.Strings.Error, PluginLanguageManager.PluginStrings.SelectedPathNotAFile, MessageBoxButtons.OK);
+                    }
+                    return false;
+                }
+            }
+            else
+            {
+                if (this.type == SelectType.FOLDER)
+                {
+                    using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
+                    {
+                        msgBox.ShowDialog(LanguageManager.Strings.Error, PluginLanguageManager.PluginStrings.SelectedPathNotAFolder, MessageBoxButtons.OK);
+                    }
+                    return false;
+                }
+            }
+
+
+            JObject configurationObject = JObject.FromObject(new
+            {
+                path = this.path.Text,
+            });
+            this.pluginAction.Configuration = configurationObject.ToString();
+            this.pluginAction.ConfigurationSummary = this.path.Text;
+            return true;
         }
+
 
 
         private void LoadConfig()
@@ -96,47 +131,6 @@ namespace SuchByte.WindowsUtils.GUI
                 catch { }
             }
         }
-
-        private void UpdateConfig()
-        {
-            if (String.IsNullOrWhiteSpace(this.path.Text))
-            {
-                return;
-            }
-
-            FileAttributes attr = File.GetAttributes(this.path.Text);
-            if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
-            {
-                if (this.type == SelectType.FILE)
-                {
-                    using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
-                    {
-                        msgBox.ShowDialog(LanguageManager.Strings.Error, PluginLanguageManager.PluginStrings.SelectedPathNotAFile, MessageBoxButtons.OK);
-                    }
-                    return;
-                }
-            } else
-            {
-                if (this.type == SelectType.FOLDER)
-                {
-                    using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
-                    {
-                        msgBox.ShowDialog(LanguageManager.Strings.Error, PluginLanguageManager.PluginStrings.SelectedPathNotAFolder, MessageBoxButtons.OK);
-                    }
-                    return;
-                }
-            }
-
-
-            JObject configurationObject = JObject.FromObject(new
-            {
-                path = this.path.Text,
-            });
-            this.pluginAction.Configuration = configurationObject.ToString();
-            this.pluginAction.DisplayName = this.pluginAction.Name + " -> " + this.path.Text;
-        }
-
-
 
         private void BtnBrowse_Click(object sender, EventArgs e)
         {

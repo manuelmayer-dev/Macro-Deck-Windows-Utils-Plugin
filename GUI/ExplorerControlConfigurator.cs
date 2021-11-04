@@ -18,10 +18,12 @@ namespace SuchByte.WindowsUtils.GUI
     public partial class ExplorerControlConfigurator : ActionConfigControl
     {
         PluginAction pluginAction;
+        ActionConfigurator actionConfigurator;
 
         public ExplorerControlConfigurator(PluginAction pluginAction, ActionConfigurator actionConfigurator)
         {
             this.pluginAction = pluginAction;
+            this.actionConfigurator = actionConfigurator;
             InitializeComponent();
 
             this.lblAction.Text = PluginLanguageManager.PluginStrings.Action;
@@ -31,13 +33,32 @@ namespace SuchByte.WindowsUtils.GUI
             this.radioRefresh.Text = PluginLanguageManager.PluginStrings.Refresh;
 
             this.LoadConfig();
+        }
 
-            actionConfigurator.ActionSave += OnActionSave;
-        }
-        private void OnActionSave(object sender, EventArgs e)
+        public override bool OnActionSave()
         {
-            this.UpdateConfig();
+            JObject jObject = new JObject();
+            if (this.radioBack.Checked)
+            {
+                jObject["action"] = "back";
+            }
+            else if (this.radioForward.Checked)
+            {
+                jObject["action"] = "forward";
+            }
+            else if (this.radioHome.Checked)
+            {
+                jObject["action"] = "home";
+            }
+            else if (this.radioRefresh.Checked)
+            {
+                jObject["action"] = "refresh";
+            }
+            this.pluginAction.Configuration = jObject.ToString();
+            this.pluginAction.ConfigurationSummary = jObject["action"].ToString();
+            return true;
         }
+
 
         private void LoadConfig()
         {
@@ -65,28 +86,6 @@ namespace SuchByte.WindowsUtils.GUI
             }
         }
 
-        private void UpdateConfig()
-        {
-            JObject jObject = new JObject();
-            if (this.radioBack.Checked)
-            {
-                jObject["action"] = "back";
-            }
-            else if (this.radioForward.Checked)
-            {
-                jObject["action"] = "forward";
-            }
-            else if (this.radioHome.Checked)
-            {
-                jObject["action"] = "home";
-            }
-            else if (this.radioRefresh.Checked)
-            {
-                jObject["action"] = "refresh";
-            }
-            this.pluginAction.Configuration = jObject.ToString();
-            this.pluginAction.DisplayName = this.pluginAction.Name + " -> " + jObject["action"].ToString();
-        }
 
     }
 }

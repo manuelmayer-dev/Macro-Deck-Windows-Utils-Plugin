@@ -1,5 +1,6 @@
 ﻿
 using SuchByte.MacroDeck.GUI.CustomControls;
+using System.Diagnostics;
 
 namespace SuchByte.WindowsUtils.GUI
 {

@@ -2,6 +2,8 @@
 A collection of some useful functions for controlling Windows
 
 # Features
+- ## Run command line commands
+Run command line commands with an working directory and save the output directly to a variable
 - ### Start application
 Start .exe, .ink and .url files with and without arguments
 - ### Open file

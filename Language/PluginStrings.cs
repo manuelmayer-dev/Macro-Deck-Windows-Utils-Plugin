@@ -41,6 +41,15 @@ namespace SuchByte.WindowsUtils.Language
         public string Refresh = "Refresh";
         public string SelectedPathNotAFile = "The selected path is not a valid file";
         public string SelectedPathNotAFolder = "The selected path is not a valid folder";
+        public string ActionCommandline = "Command line command";
+        public string ActionCommandlineDescription = "Run a commandline command";
+        public string Command = "Command";
+        public string WorkingDirectory = "Working directory";
+        public string SaveOutputToVariable = "Save output to variable";
+        public string VariableName = "Variable name";
+        public string FailedToImportIcon = "Failed to import the icon";
+        public string IconSuccessfullyImportedToX = "Icon successfully imported to {0}";
+
 
 
     }

@@ -34,4 +34,12 @@
 	<Refresh>Refresh</Refresh>
 	<SelectedPathNotAFile>The selected path is not a valid file</SelectedPathNotAFile>
 	<SelectedPathNotAFolder>The selected path is not a valid folder</SelectedPathNotAFolder>
+	<ActionCommandline>Command line command</ActionCommandline>
+	<ActionCommandlineDescription>Run a commandline command</ActionCommandlineDescription>
+	<Command>Command</Command>
+	<WorkingDirectory>Working directory</WorkingDirectory>
+	<SaveOutputToVariable>Save output to variable</SaveOutputToVariable>
+	<VariableName>Variable name</VariableName>
+	<FailedToImportIcon>Failed to import the icon</FailedToImportIcon>
+	<IconSuccessfullyImportedToX>Icon successfully imported to {0}</IconSuccessfullyImportedToX>
 </PluginStrings>

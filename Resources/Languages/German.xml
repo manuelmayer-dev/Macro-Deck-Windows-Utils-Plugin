@@ -34,4 +34,12 @@
 	<Refresh>Neuladen</Refresh>
 	<SelectedPathNotAFile>Der ausgewählte Pfad ist keine gültige Datei</SelectedPathNotAFile>
 	<SelectedPathNotAFolder>Der ausgewählte Pfad ist kein gültiger Ordner</SelectedPathNotAFolder>
+	<ActionCommandline>Kommandozeilenbefehl</ActionCommandline>
+	<ActionCommandlineDescription>Führt einen Befehl in der Kommandozeile aus</ActionCommandlineDescription>
+	<Command>Befehl</Command>
+	<WorkingDirectory>Ausführen in</WorkingDirectory>
+	<SaveOutputToVariable>Ausgabe in Variable speichern</SaveOutputToVariable>
+	<VariableName>Variablenname</VariableName>
+	<FailedToImportIcon>Fehler beim Importieren des Icons</FailedToImportIcon>
+	<IconSuccessfullyImportedToX>Das Icon wurde erfolgreich in {0} importiert</IconSuccessfullyImportedToX>
 </PluginStrings>

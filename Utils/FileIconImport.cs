@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using SuchByte.WindowsUtils.GUI;
 using System.Diagnostics;
+using SuchByte.WindowsUtils.Language;
 
 namespace SuchByte.WindowsUtils.Utils
 {
@@ -24,7 +25,7 @@ namespace SuchByte.WindowsUtils.Utils
 
                     IntPtr hIcon = ShellIcon.GetJumboIcon(ShellIcon.GetIconIndex(filePath));
 
-                    using (System.Drawing.Icon ico = System.Drawing.Icon.ExtractAssociatedIcon(filePath))
+                    using (System.Drawing.Icon ico = (System.Drawing.Icon)System.Drawing.Icon.FromHandle(hIcon).Clone())
                     {
                         icon = ico.ToBitmap();
 
@@ -61,7 +62,7 @@ namespace SuchByte.WindowsUtils.Utils
                         {
                             using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
                             {
-                                msgBox.ShowDialog("Import icon", "Failed to import the icon", MessageBoxButtons.OK);
+                                msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, PluginLanguageManager.PluginStrings.FailedToImportIcon, MessageBoxButtons.OK);
                             }
                             return;
                         }
@@ -76,7 +77,7 @@ namespace SuchByte.WindowsUtils.Utils
                                     IconManager.AddIconImage(iconPack, icon);
                                     using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
                                     {
-                                        msgBox.ShowDialog("Import icon", "Icon successfully imported to " + iconPackSelector.IconPack, MessageBoxButtons.OK);
+                                        msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, String.Format(PluginLanguageManager.PluginStrings.IconSuccessfullyImportedToX, iconPackSelector.IconPack), MessageBoxButtons.OK);
                                     }
                                 }
                                 catch { }

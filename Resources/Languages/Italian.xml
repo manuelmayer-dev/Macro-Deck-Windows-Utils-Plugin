@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<__Language__>Italian</__Language__>
+	<__LanguageCode__>it</__LanguageCode__>
+	<__Author__>PhoenixWyllow</__Author__>
+
+	<ActionDecreaseVolume>Riduci il volume</ActionDecreaseVolume>
+	<ActionDecreaseVolumeDescription>Riduce il volume del dispositivo di riproduzione corrente</ActionDecreaseVolumeDescription>
+	<ActionIncreaseVolume>Aumenta il volume</ActionIncreaseVolume>
+	<ActionIncreaseVolumeDescription>Aumenta il volume del dispositivo di riproduzione corrente</ActionIncreaseVolumeDescription>
+	<ActionMuteVolume>Silenzia</ActionMuteVolume>
+	<ActionMuteVolumeDescription>Mette in silenzio il dispositivo di riproduzione corrente</ActionMuteVolumeDescription>
+	<ActionHotkey>Tasto rapido</ActionHotkey>
+	<ActionHotkeyDescription>Invia un singolo tasto di scelta rapida</ActionHotkeyDescription>
+	<ActionOpenFile>Apri file</ActionOpenFile>
+	<ActionOpenFileDescription>Apri qualsiasi file</ActionOpenFileDescription>
+	<ActionOpenFolder>Apri cartella</ActionOpenFolder>
+	<ActionOpenFolderDescription>Apri una cartella</ActionOpenFolderDescription>
+	<ActionStartApplication>Avvia applicazione</ActionStartApplication>
+	<ActionStartApplicationDescription>Avvia un'applicazione con e senza parametri di avvio</ActionStartApplicationDescription>
+	<ActionExplorerControl>Controllo Explorer</ActionExplorerControl>
+	<ActionExplorerControlDescription>Explorer/Browser (indietro/avanti/home/refresh)</ActionExplorerControlDescription>
+	<Path>Persorso</Path>
+	<Arguments>Parametri</Arguments>
+	<ChooseAFileOrDragAndDrop>Seleziona un file o trascinalo qui</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>Seleziona una cartella o trascinala qui</ChooseAFolderOrDragAndDrop>
+	<QuestionImportFilesIcon>Vuoi importare l'icona del file?</QuestionImportFilesIcon>
+	<QuestionImportFileTypesIcon>Vuoi importare l'icona del tipo di file?</QuestionImportFileTypesIcon>
+	<ImportIcon>Importa icona</ImportIcon>
+	<Action>Azione</Action>
+	<Back>Indietro</Back>
+	<Forward>Avanti</Forward>
+	<Home>Home</Home>
+	<Refresh>Refresh</Refresh>
+	<SelectedPathNotAFile>Il percorso selezionato non è un file valido</SelectedPathNotAFile>
+	<SelectedPathNotAFolder>Il percorso selezionato non è una cartella valida</SelectedPathNotAFolder>
+	<ActionCommandline>Comando da linea di comando</ActionCommandline>
+	<ActionCommandlineDescription>Esegui un comando da linea di comanda</ActionCommandlineDescription>
+	<Command>Comando</Command>
+	<WorkingDirectory>Cartella di lavoro</WorkingDirectory>
+	<SaveOutputToVariable>Salva l'output in una variabile</SaveOutputToVariable>
+	<VariableName>Nome della variabile</VariableName>
+	<FailedToImportIcon>Importazione dell'icona fallita</FailedToImportIcon>
+	<IconSuccessfullyImportedToX>Icona importata con successo in {0}</IconSuccessfullyImportedToX>
+</PluginStrings>

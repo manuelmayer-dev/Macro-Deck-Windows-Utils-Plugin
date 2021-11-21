@@ -49,8 +49,10 @@ namespace SuchByte.WindowsUtils.Language
         public string VariableName = "Variable name";
         public string FailedToImportIcon = "Failed to import the icon";
         public string IconSuccessfullyImportedToX = "Icon successfully imported to {0}";
-
-
+        public string ActionWriteText = "Write text";
+        public string ActionWriteTextDescription = "Write the configured text onto a selected text input";
+        public string AddVariable = "Add variable";
+        public string TypeTextHere = "Type text here";
 
     }
 }

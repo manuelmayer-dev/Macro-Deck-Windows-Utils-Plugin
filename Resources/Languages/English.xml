@@ -42,4 +42,8 @@
 	<VariableName>Variable name</VariableName>
 	<FailedToImportIcon>Failed to import the icon</FailedToImportIcon>
 	<IconSuccessfullyImportedToX>Icon successfully imported to {0}</IconSuccessfullyImportedToX>
+	<ActionWriteText>Write text</ActionWriteText>
+	<ActionWriteTextDescription>Write the configured text onto a selected text input</ActionWriteTextDescription>
+	<AddVariable>Add variable</AddVariable>
+	<TypeTextHere>Type text here</TypeTextHere>
 </PluginStrings>

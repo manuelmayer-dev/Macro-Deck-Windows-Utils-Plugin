@@ -40,6 +40,7 @@ namespace SuchByte.WindowsUtils
             PluginLanguageManager.Initialize();
             this.Actions = new List<PluginAction>
             {
+                new WriteTextAction(),
                 new CommandlineAction(),
                 new OpenFileAction(),
                 new OpenFolderAction(),

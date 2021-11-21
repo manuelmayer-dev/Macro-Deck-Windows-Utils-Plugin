@@ -1,0 +1,45 @@
+﻿<?xml version="1.0"?>
+<PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<__Language__>Russian</__Language__>
+	<__LanguageCode__>ru</__LanguageCode__>
+	<__Author__>zedalert</__Author__>
+
+	<ActionDecreaseVolume>Уменьшить громкость</ActionDecreaseVolume>
+	<ActionDecreaseVolumeDescription>Уменьшить громкость текущего устройства воспроизведения</ActionDecreaseVolumeDescription>
+	<ActionIncreaseVolume>Увеличить громкость</ActionIncreaseVolume>
+	<ActionIncreaseVolumeDescription>Увеличить громкость текущего устройства воспроизведения</ActionIncreaseVolumeDescription>
+	<ActionMuteVolume>Отключить звук</ActionMuteVolume>
+	<ActionMuteVolumeDescription>Отключить звук текущего устройства воспроизведения</ActionMuteVolumeDescription>
+	<ActionHotkey>Горячая клавиша</ActionHotkey>
+	<ActionHotkeyDescription>Выполнение сочетаний клавиш</ActionHotkeyDescription>
+	<ActionOpenFile>Открыть файл</ActionOpenFile>
+	<ActionOpenFileDescription>Открыть заданный файл</ActionOpenFileDescription>
+	<ActionOpenFolder>Открыть папку</ActionOpenFolder>
+	<ActionOpenFolderDescription>Открыть заданную папку</ActionOpenFolderDescription>
+	<ActionStartApplication>Запустить программу</ActionStartApplication>
+	<ActionStartApplicationDescription>Запустить программу (опционально с аргументами)</ActionStartApplicationDescription>
+	<ActionExplorerControl>Управление браузером</ActionExplorerControl>
+	<ActionExplorerControlDescription>Браузер/проводник (назад/вперёд/домой/обновить)</ActionExplorerControlDescription>
+	<Path>Путь</Path>
+	<Arguments>Аргументы</Arguments>
+	<ChooseAFileOrDragAndDrop>Выберите файл или перетащите его в эту область</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>Выберите папку или перетащите её в эту область</ChooseAFolderOrDragAndDrop>
+	<QuestionImportFilesIcon>Импортировать иконку из этого файла?</QuestionImportFilesIcon>
+	<QuestionImportFileTypesIcon>Импортировать иконку этого типа файла?</QuestionImportFileTypesIcon>
+	<ImportIcon>Импортирование иконки</ImportIcon>
+	<Action>Действие</Action>
+	<Back>Назад</Back>
+	<Forward>Вперёд</Forward>
+	<Home>Домой</Home>
+	<Refresh>Обновить</Refresh>
+	<SelectedPathNotAFile>Указанный путь не является файлом</SelectedPathNotAFile>
+	<SelectedPathNotAFolder>Указанный путь не является папкой</SelectedPathNotAFolder>
+	<ActionCommandline>Выполнить команду</ActionCommandline>
+	<ActionCommandlineDescription>Выполнить команду или пакетный файл</ActionCommandlineDescription>
+	<Command>Команда</Command>
+	<WorkingDirectory>Рабочая папка</WorkingDirectory>
+	<SaveOutputToVariable>Сохранить выходные данные в переменную</SaveOutputToVariable>
+	<VariableName>Имя переменной</VariableName>
+	<FailedToImportIcon>Не удалось импортировать иконку</FailedToImportIcon>
+	<IconSuccessfullyImportedToX>Иконка успешно импортирована в {0}</IconSuccessfullyImportedToX>
+</PluginStrings>

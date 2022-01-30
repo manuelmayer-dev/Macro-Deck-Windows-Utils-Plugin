@@ -3,8 +3,10 @@ using Newtonsoft.Json.Linq;
 using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Icons;
+using SuchByte.MacroDeck.Logging;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.Language;
+using SuchByte.WindowsUtils.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,27 +19,27 @@ using System.Windows.Forms;
 
 namespace SuchByte.WindowsUtils.GUI
 {
-    public partial class ApplicationSelector : ActionConfigControl
+    public partial class StartApplicationActionConfigView : ActionConfigControl
     {
+        private readonly StartApplicationActionConfigViewModel _viewModel;
 
-        PluginAction pluginAction;
-        ActionConfigurator actionConfigurator;
-
-        public ApplicationSelector(PluginAction pluginAction, ActionConfigurator actionConfigurator)
+        public StartApplicationActionConfigView(PluginAction action)
         {
-            this.pluginAction = pluginAction;
-            this.actionConfigurator = actionConfigurator;
             InitializeComponent();
 
             this.lblPath.Text = PluginLanguageManager.PluginStrings.Path;
             this.lblArguments.Text = PluginLanguageManager.PluginStrings.Arguments;
             this.lblChoose.Text = PluginLanguageManager.PluginStrings.ChooseAFileOrDragAndDrop;
 
+            this.method.Items.AddRange(new[] { PluginLanguageManager.PluginStrings.MethodStart, 
+                                                PluginLanguageManager.PluginStrings.MethodStartStop, 
+                                                PluginLanguageManager.PluginStrings.MethodStartFocus, });
+
             this.AllowDrop = true;
             this.DragEnter += ApplicationSelector_DragEnter;
             this.DragDrop += ApplicationSelector_DragDrop;
 
-            this.LoadConfig();
+            this._viewModel = new StartApplicationActionConfigViewModel(action);
         }
 
 
@@ -58,13 +60,50 @@ namespace SuchByte.WindowsUtils.GUI
                 e.Effect = DragDropEffects.Copy;
             }
         }
+        private void StartApplicationActionConfigView_Load(object sender, EventArgs e)
+        {
+            this.path.Text = this._viewModel.Path;
+            this.arguments.Text = this._viewModel.Arguments;
+            switch (this._viewModel.StartMethod)
+            {
+                case Models.StartMethod.Start:
+                    this.method.Text = PluginLanguageManager.PluginStrings.MethodStart;
+                    break;
+                case Models.StartMethod.StartStop:
+                    this.method.Text = PluginLanguageManager.PluginStrings.MethodStartStop;
+                    break;
+                case Models.StartMethod.StartFocus:
+                    this.method.Text = PluginLanguageManager.PluginStrings.MethodStartFocus;
+                    break;
+            }
+            this.checkRunAsAdmin.Checked = this._viewModel.RunAsAdmin;
+            this.checkSyncButtonState.Checked = this._viewModel.SyncButtonState;
+        }
 
         public override bool OnActionSave()
         {
-            if (String.IsNullOrWhiteSpace(this.path.Text))
+            if (string.IsNullOrWhiteSpace(this.path.Text))
             {
                 return false;
             }
+            this._viewModel.Path = this.path.Text;
+            this._viewModel.Arguments = this.arguments.Text;
+            if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStart))
+            {
+                this._viewModel.StartMethod = Models.StartMethod.Start;
+            }
+            else if(this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStartStop))
+            {
+                this._viewModel.StartMethod = Models.StartMethod.StartStop;
+            }
+            else if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStartFocus))
+            {
+                this._viewModel.StartMethod = Models.StartMethod.StartFocus;
+            }
+            this._viewModel.RunAsAdmin = this.checkRunAsAdmin.Checked;
+            this._viewModel.SyncButtonState = this.checkSyncButtonState.Checked;
+
+
             using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
             {
                 if (msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, PluginLanguageManager.PluginStrings.QuestionImportFilesIcon, MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -73,37 +112,13 @@ namespace SuchByte.WindowsUtils.GUI
                     {
                         Utils.FileIconImport.ImportIcon(this.path.Text);
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        MacroDeckLogger.Error(Main.Instance, $"Failed to import the file icon: {ex.Message + Environment.NewLine + ex.StackTrace}");
+                    }
                 }
-                JObject configurationObject = JObject.FromObject(new
-                {
-                    path = this.path.Text,
-                    arguments = this.arguments.Text,
-                });
-                this.pluginAction.Configuration = configurationObject.ToString();
-                this.pluginAction.ConfigurationSummary = this.path.Text + (!String.IsNullOrWhiteSpace(this.arguments.Text) ? (" -> " + this.arguments.Text) : "");
             }
-            return true;
-        }
-
-        private void OnActionSave(object sender, EventArgs e)
-        {
-            
-        }
-
-
-        private void LoadConfig()
-        {
-            if (!String.IsNullOrWhiteSpace(this.pluginAction.Configuration))
-            {
-                try
-                {
-                    JObject configurationObject = JObject.Parse(this.pluginAction.Configuration);
-                    this.path.Text = configurationObject["path"].ToString();
-                    this.arguments.Text = configurationObject["arguments"].ToString();                    
-                }
-                catch { }
-            }
+            return this._viewModel.SaveConfig();
         }
 
         private void BtnBrowse_Click(object sender, EventArgs e)
@@ -126,7 +141,6 @@ namespace SuchByte.WindowsUtils.GUI
                 }
             }
         }
-
 
     }
 }

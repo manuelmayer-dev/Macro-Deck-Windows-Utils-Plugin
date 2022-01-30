@@ -7,7 +7,9 @@ using SuchByte.WindowsUtils.GUI;
 using SuchByte.WindowsUtils.Language;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SuchByte.WindowsUtils.Actions
 {

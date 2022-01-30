@@ -53,6 +53,10 @@ namespace SuchByte.WindowsUtils.Language
         public string ActionWriteTextDescription = "Write the configured text onto a selected text input";
         public string AddVariable = "Add variable";
         public string TypeTextHere = "Type text here";
+        public string Method = "Method";
+        public string MethodStart = "Start";
+        public string MethodStartStop = "Start/Stop";
+        public string MethodStartFocus = "Start/Focus";
 
     }
 }

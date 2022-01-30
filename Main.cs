@@ -25,6 +25,8 @@ namespace SuchByte.WindowsUtils
 
     public class Main : MacroDeckPlugin
     {
+        public static Main Instance;
+
         public override string Description => "Trigger keyboard hotkeys, open applications, open folders and more";
         public override Image Icon => Properties.Resources.Windows_Utils;
 
@@ -32,6 +34,7 @@ namespace SuchByte.WindowsUtils
 
         public Main()
         {
+            Instance = this;
             PluginInstance.Main = this;
         }
 

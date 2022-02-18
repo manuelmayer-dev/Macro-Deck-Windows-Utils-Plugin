@@ -27,7 +27,7 @@ All translation files are located under https://github.com/SuchByte/Macro-Deck-W
 Please use the ISO names for the file name and for the __Language__ node in the file. For __LanguageCode__ use the ISO-639-1 code. You can find more information here: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
 ### This is a plugin for [Macro Deck 2](https://github.com/SuchByte/Macro-Deck), it does NOT function as a standalone app
-<img height="64px" src="https://macrodeck.org/images/works_with_macrodeck2.png" />
+<img height="64px" src="https://macrodeck.org/images/macro_deck_2_official_plugin.png" />
 
 
 # Third party licenses

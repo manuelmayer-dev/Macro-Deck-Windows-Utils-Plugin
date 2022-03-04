@@ -1,7 +1,7 @@
 {
   "type" : "Plugin",
   "name" : "Windows Utils",
-  "author" : "You",
+  "author" : "Macro Deck",
   "repository" : "https://github.com/SuchByte/Macro-Deck-Windows-Utils-Plugin",
   "packageId" : "SuchByte.WindowsUtils",
   "version" : "1.4.0",

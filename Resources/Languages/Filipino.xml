@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<__Language__>Filipino</__Language__>
+	<__LanguageCode__>fil</__LanguageCode__>
+	<__Author__>jbcarreon123</__Author__>
+
+	<ActionDecreaseVolume>Pahinain ang volume</ActionDecreaseVolume>
+	<ActionDecreaseVolumeDescription>Pahinain ang volume ng kasalukuyang playback device</ActionDecreaseVolumeDescription>
+	<ActionIncreaseVolume>Palakasin ang volume</ActionIncreaseVolume>
+	<ActionIncreaseVolumeDescription>Palakasin ang volume ng kasalukuyang playback device</ActionIncreaseVolumeDescription>
+	<ActionMuteVolume>I-mute ang volume</ActionMuteVolume>
+	<ActionMuteVolumeDescription>I-mute ang kasalukuyang playback device</ActionMuteVolumeDescription>
+	<ActionHotkey>Hotkey</ActionHotkey>
+	<ActionHotkeyDescription>Mag-send ng isang hotkey</ActionHotkeyDescription>
+	<ActionOpenFile>Magbukas ng file</ActionOpenFile>
+	<ActionOpenFileDescription>Magbukas ng kahit anong file</ActionOpenFileDescription>
+	<ActionOpenFolder>Magbukas ng folder</ActionOpenFolder>
+	<ActionOpenFolderDescription>Magbukas ng folder</ActionOpenFolderDescription>
+	<ActionStartApplication>Magbukas ng application</ActionStartApplication>
+	<ActionStartApplicationDescription>Magbukas ng application na may o walang start arguments</ActionStartApplicationDescription>
+	<ActionExplorerControl>I-control ang Explorer</ActionExplorerControl>
+	<ActionExplorerControlDescription>Explorer/browser (pasulong/paurong/home/refresh)</ActionExplorerControlDescription>
+	<Path>Path</Path>
+	<Arguments>Arguments</Arguments>
+	<ChooseAFileOrDragAndDrop>Pumili ng file o mag drag and drop papunta dito</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>Pumili ng folder or mag drag and drop papunta dito</ChooseAFolderOrDragAndDrop>
+	<QuestionImportFilesIcon>Gusto mo bang i-import ang file icon?</QuestionImportFilesIcon>
+	<QuestionImportFileTypesIcon>Gusto mo bang i-import ang icon ng file type?</QuestionImportFileTypesIcon>
+	<ImportIcon>I-import ang icon</ImportIcon>
+	<Action>Action</Action>
+	<Back>Pasulong</Back>
+	<Forward>Paurong</Forward>
+	<Home>Home</Home>
+	<Refresh>Refresh</Refresh>
+	<SelectedPathNotAFile>Ang napiling path ay hindi na wastong file</SelectedPathNotAFile>
+	<SelectedPathNotAFolder>Ang napiling path ay hindi na wastong folder</SelectedPathNotAFolder>
+	<ActionCommandline>Command line command</ActionCommandline>
+	<ActionCommandlineDescription>Mag-run ng commandline command</ActionCommandlineDescription>
+	<Command>Command</Command>
+	<WorkingDirectory>Working directory</WorkingDirectory>
+	<SaveOutputToVariable>I-save ang output sa isang variable</SaveOutputToVariable>
+	<VariableName>Pangalan ng Variable</VariableName>
+	<FailedToImportIcon>Hindi na-import ang icon</FailedToImportIcon>
+	<IconSuccessfullyImportedToX>Ang icon ay na-import sa {0}</IconSuccessfullyImportedToX>
+	<ActionWriteText>Mag-sulat ng text</ActionWriteText>
+	<ActionWriteTextDescription>Mag-sulat ng naka-configured na text papunta sa napiling text input</ActionWriteTextDescription>
+	<AddVariable>Mag-add ng variable</AddVariable>
+	<TypeTextHere>Mag-type ng text dito</TypeTextHere>
+</PluginStrings>

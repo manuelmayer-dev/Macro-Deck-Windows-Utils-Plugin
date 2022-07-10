@@ -49,7 +49,7 @@ namespace SuchByte.WindowsUtils.Actions
                         Debug.WriteLine(output);
                         var variableName = configurationObject["variableName"].ToString();
                         Enum.TryParse(typeof(VariableType), configurationObject["variableType"].ToString(), true, out object type);
-                        VariableManager.SetValue(variableName, output, (VariableType) type, PluginInstance.Main, true);
+                        VariableManager.SetValue(variableName, output, (VariableType) type, PluginInstance.Main, null);
                     }
                 }
                 catch (Exception e) {

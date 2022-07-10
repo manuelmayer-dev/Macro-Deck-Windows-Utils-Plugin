@@ -52,7 +52,6 @@ namespace SuchByte.WindowsUtils.Services
                 }
             };
             p.Start();
-            MacroDeckLogger.Trace(Main.Instance, $"Started process: {p.ProcessName} PID: {p.Id}");
         }
 
         public static bool IsRunning(string path)
@@ -91,7 +90,6 @@ namespace SuchByte.WindowsUtils.Services
                 }
             }
             MinimizeAndRestoreWindow(handle); // Fallback function
-            MacroDeckLogger.Trace(Main.Instance, $"Brought process to foreground: {p.ProcessName} PID: {p.Id}");
         }
 
         public static Process GetProcessByPath(string path)

@@ -105,7 +105,7 @@ namespace SuchByte.WindowsUtils.GUI
 
         private void LoadConfig()
         {
-            if (!String.IsNullOrWhiteSpace(this.pluginAction.Configuration))
+            if (!string.IsNullOrWhiteSpace(this.pluginAction.Configuration))
             {
                 try
                 {

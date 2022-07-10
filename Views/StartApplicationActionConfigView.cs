@@ -6,6 +6,8 @@ using SuchByte.MacroDeck.Icons;
 using SuchByte.MacroDeck.Logging;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.Language;
+using SuchByte.WindowsUtils.Models;
+using SuchByte.WindowsUtils.Services;
 using SuchByte.WindowsUtils.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,9 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SuchByte.WindowsUtils.GUI
@@ -23,31 +27,38 @@ namespace SuchByte.WindowsUtils.GUI
     {
         private readonly StartApplicationActionConfigViewModel _viewModel;
 
+        private readonly PluginAction _action;
+
         public StartApplicationActionConfigView(PluginAction action)
         {
             InitializeComponent();
 
+            this._action ??= action;
+
             this.lblPath.Text = PluginLanguageManager.PluginStrings.Path;
             this.lblArguments.Text = PluginLanguageManager.PluginStrings.Arguments;
-            this.lblChoose.Text = PluginLanguageManager.PluginStrings.ChooseAFileOrDragAndDrop;
+            this.path.PlaceHolderText = PluginLanguageManager.PluginStrings.ChooseAFileOrDragAndDrop;
 
             this.method.Items.AddRange(new[] { PluginLanguageManager.PluginStrings.MethodStart, 
                                                 PluginLanguageManager.PluginStrings.MethodStartStop, 
                                                 PluginLanguageManager.PluginStrings.MethodStartFocus, });
 
+            this.path.AllowDrop = true;
+            this.path.DragEnter += ApplicationSelector_DragEnter;
+            this.path.DragDrop += ApplicationSelector_DragDrop;
             this.AllowDrop = true;
             this.DragEnter += ApplicationSelector_DragEnter;
             this.DragDrop += ApplicationSelector_DragDrop;
 
+
             this._viewModel = new StartApplicationActionConfigViewModel(action);
         }
-
 
         private void ApplicationSelector_DragDrop(object sender, DragEventArgs e)
         {
             try
             {
-                string file = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+                string file = ((string[])e.Data.GetData(DataFormats.FileDrop)).FirstOrDefault();
                 this.path.Text = file;
             }
             catch { }
@@ -60,19 +71,20 @@ namespace SuchByte.WindowsUtils.GUI
                 e.Effect = DragDropEffects.Copy;
             }
         }
+
         private void StartApplicationActionConfigView_Load(object sender, EventArgs e)
         {
             this.path.Text = this._viewModel.Path;
             this.arguments.Text = this._viewModel.Arguments;
             switch (this._viewModel.StartMethod)
             {
-                case Models.StartMethod.Start:
+                case StartMethod.Start:
                     this.method.Text = PluginLanguageManager.PluginStrings.MethodStart;
                     break;
-                case Models.StartMethod.StartStop:
+                case StartMethod.StartStop:
                     this.method.Text = PluginLanguageManager.PluginStrings.MethodStartStop;
                     break;
-                case Models.StartMethod.StartFocus:
+                case StartMethod.StartFocus:
                     this.method.Text = PluginLanguageManager.PluginStrings.MethodStartFocus;
                     break;
             }
@@ -90,18 +102,20 @@ namespace SuchByte.WindowsUtils.GUI
             this._viewModel.Arguments = this.arguments.Text;
             if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStart))
             {
-                this._viewModel.StartMethod = Models.StartMethod.Start;
+                this._viewModel.StartMethod = StartMethod.Start;
             }
             else if(this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStartStop))
             {
-                this._viewModel.StartMethod = Models.StartMethod.StartStop;
+                this._viewModel.StartMethod = StartMethod.StartStop;
             }
             else if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStartFocus))
             {
-                this._viewModel.StartMethod = Models.StartMethod.StartFocus;
+                this._viewModel.StartMethod = StartMethod.StartFocus;
             }
             this._viewModel.RunAsAdmin = this.checkRunAsAdmin.Checked;
             this._viewModel.SyncButtonState = this.checkSyncButtonState.Checked;
+
+           
 
 
             using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
@@ -110,7 +124,10 @@ namespace SuchByte.WindowsUtils.GUI
                 {
                     try
                     {
-                        Utils.FileIconImport.ImportIcon(this.path.Text);
+                        var iconModel = Utils.FileIconImport.ImportIcon(this.path.Text);
+                        if (iconModel != null)
+                        {
+                        }
                     }
                     catch (Exception ex)
                     {

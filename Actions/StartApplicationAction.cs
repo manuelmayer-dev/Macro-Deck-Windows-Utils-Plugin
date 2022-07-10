@@ -25,8 +25,6 @@ namespace SuchByte.WindowsUtils.Actions
 
         public override bool CanConfigure => true;
 
-        private System.Timers.Timer stateUpdateTimer;
-
         public override void Trigger(string clientId, ActionButton actionButton)
         {
             var configModel = StartApplicationActionConfigModel.Deserialize(this.Configuration);
@@ -68,19 +66,13 @@ namespace SuchByte.WindowsUtils.Actions
         {
             var configModel = StartApplicationActionConfigModel.Deserialize(this.Configuration);
             if (configModel == null || !configModel.SyncButtonState) return;
-            this.stateUpdateTimer = new System.Timers.Timer()
-            {
-                Enabled = true,
-                Interval = 2000,
-            };
-            this.stateUpdateTimer.Elapsed += StateUpdateTimer_Elapsed;
+
+            Main.Instance.TickTimer.Elapsed += StateUpdateTimer_Elapsed;
         }
 
         public override void OnActionButtonDelete()
         {
-            if (this.stateUpdateTimer == null) return;
-            this.stateUpdateTimer.Stop();
-            this.stateUpdateTimer.Dispose();
+            Main.Instance.TickTimer.Elapsed -= StateUpdateTimer_Elapsed;
         }
 
 

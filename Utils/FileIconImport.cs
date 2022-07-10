@@ -8,13 +8,14 @@ using System.Windows.Forms;
 using SuchByte.WindowsUtils.GUI;
 using System.Diagnostics;
 using SuchByte.WindowsUtils.Language;
+using SuchByte.WindowsUtils.Models;
 
 namespace SuchByte.WindowsUtils.Utils
 {
     public static class FileIconImport
     {
 
-        public static void ImportIcon(string filePath)
+        public static IconImportModel ImportIcon(string filePath)
         {
             using (var iconImportQuality = new MacroDeck.GUI.Dialogs.IconImportQuality())
             {
@@ -64,7 +65,7 @@ namespace SuchByte.WindowsUtils.Utils
                             {
                                 msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, PluginLanguageManager.PluginStrings.FailedToImportIcon, MessageBoxButtons.OK);
                             }
-                            return;
+                            return null;
                         }
 
                         using (var iconPackSelector = new IconPackSelector())
@@ -74,11 +75,16 @@ namespace SuchByte.WindowsUtils.Utils
                                 try
                                 {
                                     IconPack iconPack = IconManager.GetIconPackByName(iconPackSelector.IconPack);
-                                    IconManager.AddIconImage(iconPack, icon);
+                                    MacroDeck.Icons.Icon macroDeckIcon = IconManager.AddIconImage(iconPack, icon);
                                     using (var msgBox = new MacroDeck.GUI.CustomControls.MessageBox())
                                     {
                                         msgBox.ShowDialog(PluginLanguageManager.PluginStrings.ImportIcon, String.Format(PluginLanguageManager.PluginStrings.IconSuccessfullyImportedToX, iconPackSelector.IconPack), MessageBoxButtons.OK);
                                     }
+                                    return new IconImportModel()
+                                    {
+                                        IconPack = iconPack.Name,
+                                        IconId = macroDeckIcon.IconId,
+                                    };
                                 }
                                 catch { }
                             }
@@ -86,6 +92,8 @@ namespace SuchByte.WindowsUtils.Utils
                     }
                 }
             }
+
+            return null;
         }
 
     }

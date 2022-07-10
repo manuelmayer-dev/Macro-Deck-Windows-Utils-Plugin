@@ -2,6 +2,7 @@
 using SuchByte.MacroDeck.ActionButton;
 using SuchByte.MacroDeck.GUI;
 using SuchByte.MacroDeck.GUI.CustomControls;
+using SuchByte.MacroDeck.Logging;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
 using SuchByte.WindowsUtils.Language;
@@ -23,24 +24,24 @@ namespace SuchByte.WindowsUtils.Actions
 
         public override void Trigger(string clientId, ActionButton actionButton)
         {
-            if (!String.IsNullOrWhiteSpace(this.Configuration))
+            if (!string.IsNullOrWhiteSpace(this.Configuration))
             {
                 try
                 {
                     JObject configurationObject = JObject.Parse(this.Configuration);
                     var text = configurationObject["text"].ToString();
 
-                    foreach (MacroDeck.Variables.Variable variable in MacroDeck.Variables.VariableManager.Variables)
+                    foreach (MacroDeck.Variables.Variable variable in MacroDeck.Variables.VariableManager.ListVariables.ToList().FindAll(x => text.ToLower().Contains("{" + x.Name.ToLower() + "}")))
                     {
-                        if (text.ToLower().Contains("{" + variable.Name.ToLower() + "}"))
-                        {
-                            text = text.Replace("{" + variable.Name + "}", variable.Value.ToString(), StringComparison.OrdinalIgnoreCase);
-                        }
+                        text = text.Replace("{" + variable.Name + "}", variable.Value.ToString(), StringComparison.OrdinalIgnoreCase);
                     }
 
                     PluginInstance.Main.InputSimulator.Keyboard.TextEntry(text);
                 }
-                catch {}
+                catch (Exception ex)
+                {
+                    MacroDeckLogger.Warning(PluginInstance.Main, typeof(WriteTextAction) + ": " + ex.Message);
+                }
             }
         }
 

@@ -7,9 +7,9 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Macro Deck</Authors>
     <Company>Macro Deck</Company>
-    <AssemblyVersion>1.4.0.0</AssemblyVersion>
-    <FileVersion>1.4.0.0</FileVersion>
-    <Version>1.4.0</Version>
+    <AssemblyVersion>1.5.0.0</AssemblyVersion>
+    <FileVersion>1.5.0.0</FileVersion>
+    <Version>1.5.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -38,12 +38,17 @@
     <PackageReference Include="Magick.NET.Core" Version="8.3.1" />
     <PackageReference Include="Magick.NET.SystemDrawing" Version="4.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Macro Deck 2">
       <HintPath>C:\Program Files\Macro Deck\Macro Deck 2.dll</HintPath>
+    </Reference>
+    <Reference Include="Windows">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
     </Reference>
   </ItemGroup>
 
@@ -60,6 +65,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="GUI\CustomControls\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

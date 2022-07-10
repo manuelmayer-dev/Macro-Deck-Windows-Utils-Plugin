@@ -27,10 +27,9 @@ namespace SuchByte.WindowsUtils
     {
         public static Main Instance;
 
-        public override string Description => "Trigger keyboard hotkeys, open applications, open folders and more";
-        public override Image Icon => Properties.Resources.Windows_Utils;
-
         public InputSimulator InputSimulator = new InputSimulator();
+
+        public System.Timers.Timer TickTimer;
 
         public Main()
         {
@@ -54,9 +53,16 @@ namespace SuchByte.WindowsUtils
                 new WindowsExplorerControlAction(),
                 //new WebrequestAction(), // TODO
                 //new WindowsOpenWebsiteAction(), // TODO
-                //new MultiHotkeyAction(), // TODO
                 new HotkeyAction(),
+                //new MultiHotkeyAction(),
             };
+
+            this.TickTimer = new System.Timers.Timer()
+            {
+                Enabled = true,
+                Interval = 2000,
+            };
+            this.TickTimer.Start();
         }
     }
 }

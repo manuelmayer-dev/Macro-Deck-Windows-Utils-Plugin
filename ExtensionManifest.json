@@ -4,7 +4,7 @@
   "author" : "Macro Deck",
   "repository" : "https://github.com/SuchByte/Macro-Deck-Windows-Utils-Plugin",
   "packageId" : "SuchByte.WindowsUtils",
-  "version" : "1.4.0",
-  "target-plugin-api-version" : 31,
+  "version" : "1.4.1",
+  "target-plugin-api-version" : 35,
   "dll" : "Windows Utils.dll"
 }

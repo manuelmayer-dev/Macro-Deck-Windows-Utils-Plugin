@@ -28,13 +28,12 @@ namespace SuchByte.WindowsUtils.GUI
 
             this.btnOk.Text = LanguageManager.Strings.Ok;
 
-            if (IconManager.IconPacks.FindAll(i => !i.PackageManagerManaged).Count == 0)
+            if (IconManager.IconPacks.FindAll(i => !i.ExtensionStoreManaged).Count == 0)
             {
                 IconManager.CreateIconPack("Imported icons", Environment.UserName, "1.0.0");
-                IconManager.SaveIconPacks();
             }
 
-            foreach (IconPack iconPack in IconManager.IconPacks.FindAll(i => !i.PackageManagerManaged))
+            foreach (IconPack iconPack in IconManager.IconPacks.FindAll(i => !i.ExtensionStoreManaged))
             {
                 this.iconPacks.Items.Add(iconPack.Name);
             }

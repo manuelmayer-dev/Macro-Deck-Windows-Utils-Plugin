@@ -22,7 +22,7 @@ namespace SuchByte.WindowsUtils.Actions
 
         public override void Trigger(string clientId, ActionButton actionButton)
         {
-            if (!String.IsNullOrWhiteSpace(this.Configuration))
+            if (!string.IsNullOrWhiteSpace(this.Configuration))
             {
                 try
                 {

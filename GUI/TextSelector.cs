@@ -58,7 +58,7 @@ namespace SuchByte.WindowsUtils.GUI
         private void BtnAddVariable_Click(object sender, EventArgs e)
         {
             this.variablesContextMenu.Items.Clear();
-            foreach (MacroDeck.Variables.Variable variable in MacroDeck.Variables.VariableManager.Variables)
+            foreach (MacroDeck.Variables.Variable variable in MacroDeck.Variables.VariableManager.ListVariables)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem
                 {

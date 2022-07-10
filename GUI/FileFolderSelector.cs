@@ -65,7 +65,7 @@ namespace SuchByte.WindowsUtils.GUI
 
         public override bool OnActionSave()
         {
-            if (String.IsNullOrWhiteSpace(this.path.Text))
+            if (string.IsNullOrWhiteSpace(this.path.Text))
             {
                 return false;
             }
@@ -121,7 +121,7 @@ namespace SuchByte.WindowsUtils.GUI
 
         private void LoadConfig()
         {
-            if (!String.IsNullOrWhiteSpace(this.pluginAction.Configuration))
+            if (!string.IsNullOrWhiteSpace(this.pluginAction.Configuration))
             {
                 try
                 {

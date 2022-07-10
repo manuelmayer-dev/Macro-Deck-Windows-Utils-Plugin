@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
-using WindowsInput.Native;
+using WindowsInput;
 
 namespace SuchByte.WindowsUtils.Models
 {

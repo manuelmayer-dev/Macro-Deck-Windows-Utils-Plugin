@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using WindowsInput;
-using WindowsInput.Native;
 
 namespace SuchByte.WindowsUtils.Actions
 {
@@ -40,50 +39,50 @@ namespace SuchByte.WindowsUtils.Actions
                         List<VirtualKeyCode> modifierKeys = new List<VirtualKeyCode>();
                         VirtualKeyCode virtualKeyCode = (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), jObject["key"].ToString());
 
-                        if (Boolean.Parse(jObject["lwin"].ToString()))
+                        if (bool.Parse(jObject["lwin"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.LWIN);
                         }
-                        if (Boolean.Parse(jObject["rwin"].ToString()))
+                        if (bool.Parse(jObject["rwin"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.RWIN);
                         }
 
-                        if (Boolean.Parse(jObject["ctrl"].ToString()))
+                        if (bool.Parse(jObject["ctrl"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.CONTROL);
                         }
-                        if (Boolean.Parse(jObject["lctrl"].ToString()))
+                        if (bool.Parse(jObject["lctrl"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.LCONTROL);
                         }
-                        if (Boolean.Parse(jObject["rctrl"].ToString()))
+                        if (bool.Parse(jObject["rctrl"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.RCONTROL);
                         }
 
-                        if (Boolean.Parse(jObject["shift"].ToString()))
+                        if (bool.Parse(jObject["shift"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.SHIFT);
                         }
-                        if (Boolean.Parse(jObject["lshift"].ToString()))
+                        if (bool.Parse(jObject["lshift"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.LSHIFT);
                         }
-                        if (Boolean.Parse(jObject["rshift"].ToString()))
+                        if (bool.Parse(jObject["rshift"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.RSHIFT);
                         }
 
-                        if (Boolean.Parse(jObject["alt"].ToString()))
+                        if (bool.Parse(jObject["alt"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.MENU);
                         }
-                        if (Boolean.Parse(jObject["lalt"].ToString()))
+                        if (bool.Parse(jObject["lalt"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.LMENU);
                         }
-                        if (Boolean.Parse(jObject["ralt"].ToString()))
+                        if (bool.Parse(jObject["ralt"].ToString()))
                         {
                             modifierKeys.Add(VirtualKeyCode.RMENU);
                         }

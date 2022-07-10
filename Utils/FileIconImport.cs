@@ -1,5 +1,4 @@
 ﻿using System;
-using ImageMagick;
 using SuchByte.MacroDeck.Icons;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -28,36 +27,7 @@ namespace SuchByte.WindowsUtils.Utils
 
                     using (System.Drawing.Icon ico = (System.Drawing.Icon)System.Drawing.Icon.FromHandle(hIcon).Clone())
                     {
-                        icon = ico.ToBitmap();
-
-                        Cursor.Current = Cursors.WaitCursor;
-                        try
-                        {
-                            var file = Path.Combine(MacroDeck.MacroDeck.TempDirectoryPath, "fileicon.original");
-                            icon.Save(file, ImageFormat.Png);
-                            using (var collection = new MagickImageCollection(new FileInfo(file)))
-                            {
-                                collection.Coalesce();
-                                if (iconImportQuality.Pixels >= 0)
-                                {
-                                    foreach (var image in collection)
-                                    {
-                                        image.Resize(iconImportQuality.Pixels, iconImportQuality.Pixels);
-                                        image.Quality = 100;
-                                        image.Crop(iconImportQuality.Pixels, iconImportQuality.Pixels);
-                                    }
-                                }
-                                collection.Write(MacroDeck.MacroDeck.TempDirectoryPath + new FileInfo(file).Name + ".resized");
-                                byte[] imageBytes = File.ReadAllBytes(MacroDeck.MacroDeck.TempDirectoryPath + new FileInfo(file).Name + ".resized");
-                                using (var ms = new MemoryStream(imageBytes))
-                                {
-                                    icon = Image.FromStream(ms);
-                                }
-                            }
-                        }
-                        catch { }
-                        Cursor.Current = Cursors.Default;
-
+                        icon = iconImportQuality.Pixels >= 0 ? ImageResize.Resize(ico.ToBitmap(), iconImportQuality.Pixels, iconImportQuality.Pixels) : ico.ToBitmap();
 
                         if (icon == null)
                         {

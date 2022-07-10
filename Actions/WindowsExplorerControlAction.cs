@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WindowsInput;
-using WindowsInput.Native;
 
 namespace SuchByte.WindowsUtils.Actions
 {

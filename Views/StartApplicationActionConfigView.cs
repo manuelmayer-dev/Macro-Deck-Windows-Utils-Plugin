@@ -1,24 +1,11 @@
-﻿using ImageMagick;
-using Newtonsoft.Json.Linq;
-using SuchByte.MacroDeck.GUI;
-using SuchByte.MacroDeck.GUI.CustomControls;
-using SuchByte.MacroDeck.Icons;
+﻿using SuchByte.MacroDeck.GUI.CustomControls;
 using SuchByte.MacroDeck.Logging;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.Language;
 using SuchByte.WindowsUtils.Models;
-using SuchByte.WindowsUtils.Services;
 using SuchByte.WindowsUtils.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SuchByte.WindowsUtils.GUI

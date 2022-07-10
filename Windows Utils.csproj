@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,9 +7,11 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Macro Deck</Authors>
     <Company>Macro Deck</Company>
-    <AssemblyVersion>1.5.0.0</AssemblyVersion>
-    <FileVersion>1.5.0.0</FileVersion>
-    <Version>1.5.0</Version>
+    <AssemblyVersion>1.4.1.0</AssemblyVersion>
+    <FileVersion>1.4.1.0</FileVersion>
+    <Version>1.4.1</Version>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -33,10 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="H.InputSimulator" Version="1.1.0" />
-    <PackageReference Include="Magick.NET-Q16-x64" Version="8.3.1" />
-    <PackageReference Include="Magick.NET.Core" Version="8.3.1" />
-    <PackageReference Include="Magick.NET.SystemDrawing" Version="4.0.6" />
+    <PackageReference Include="H.InputSimulator" Version="1.2.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
@@ -45,6 +44,8 @@
   <ItemGroup>
     <Reference Include="Macro Deck 2">
       <HintPath>C:\Program Files\Macro Deck\Macro Deck 2.dll</HintPath>
+      <Private>false</Private>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
     </Reference>
     <Reference Include="Windows">
       <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd</HintPath>

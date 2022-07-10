@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WindowsInput.Native;
+using WindowsInput;
 
 namespace SuchByte.WindowsUtils.GUI
 {

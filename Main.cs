@@ -13,7 +13,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Threading;
 using WindowsInput;
-using WindowsInput.Native;
+using WindowsInput;
 
 namespace SuchByte.WindowsUtils
 {

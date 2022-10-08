@@ -34,4 +34,16 @@
 	<Refresh>Rafraîchir</Refresh>
 	<SelectedPathNotAFile>Le chemin sélectionné n'est pas un fichier valide</SelectedPathNotAFile>
 	<SelectedPathNotAFolder>Le chemin sélectionné n'est pas un dossier valide</SelectedPathNotAFolder>
+	<ActionCommandline>Ligne de commande</ActionCommandline>
+	<ActionCommandlineDescription>Exécute une commande en ligne de commande</ActionCommandlineDescription>
+	<Command>Commande</Command>
+	<WorkingDirectory>Répertoire de travaille</WorkingDirectory>
+	<SaveOutputToVariable>Enregistrer la sortie dans la variable</SaveOutputToVariable>
+	<VariableName>Nom de la variable</VariableName>
+	<FailedToImportIcon>Erreur lors de l'importation de l'icône</FailedToImportIcon>
+	<IconSuccessfullyImportedToX>L'icône a été importée avec succès dans {0}</IconSuccessfullyImportedToX>
+	<ActionWriteText>écrire du texte</ActionWriteText>
+	<ActionWriteTextDescription>Écrit un texte configuré dans le champ de texte sélectionné</ActionWriteTextDescription>
+	<AddVariable>Ajouter une variable</AddVariable>
+	<TypeTextHere>Entrez le texte ici</TypeTextHere>
 </PluginStrings>

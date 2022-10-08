@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<PluginStrings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<__Language__>Chinese</__Language__>
+	<__LanguageCode__>zh</__LanguageCode__>
+	<__Author__>KirsebaerQAQ</__Author__>
+
+	<ActionDecreaseVolume>降低音量</ActionDecreaseVolume>
+	<ActionDecreaseVolumeDescription>降低当前设备的播放音量</ActionDecreaseVolumeDescription>
+	<ActionIncreaseVolume>提高音量</ActionIncreaseVolume>
+	<ActionIncreaseVolumeDescription>提高当前设备的播放音量</ActionIncreaseVolumeDescription>
+	<ActionMuteVolume>静音</ActionMuteVolume>
+	<ActionMuteVolumeDescription>静音当前设备</ActionMuteVolumeDescription>
+	<ActionHotkey>热键</ActionHotkey>
+	<ActionHotkeyDescription>按下单个按键或组合键</ActionHotkeyDescription>
+	<ActionOpenFile>打开文件</ActionOpenFile>
+	<ActionOpenFileDescription>打开任何文件</ActionOpenFileDescription>
+	<ActionOpenFolder>打开文件夹</ActionOpenFolder>
+	<ActionOpenFolderDescription>打开一个文件夹</ActionOpenFolderDescription>
+	<ActionStartApplication>运行程序</ActionStartApplication>
+	<ActionStartApplicationDescription>使用/不使用启动参数运行应用程序</ActionStartApplicationDescription>
+	<ActionExplorerControl>资源管理器控制</ActionExplorerControl>
+	<ActionExplorerControlDescription>资源管理器/浏览器 (后退/前进/主页/刷新)</ActionExplorerControlDescription>
+	<Path>路径</Path>
+	<Arguments>启动参数</Arguments>
+	<ChooseAFileOrDragAndDrop>选择一个文件或拖动文件到此处</ChooseAFileOrDragAndDrop>
+	<ChooseAFolderOrDragAndDrop>选择一个文件夹或拖动文件夹到此处</ChooseAFolderOrDragAndDrop>
+	<QuestionImportFilesIcon>您要导入文件的图标吗?</QuestionImportFilesIcon>
+	<QuestionImportFileTypesIcon>您要导入文件类型的图标吗?</QuestionImportFileTypesIcon>
+	<ImportIcon>导入图标</ImportIcon>
+	<Action>功能</Action>
+	<Back>后退</Back>
+	<Forward>前进</Forward>
+	<Home>主页</Home>
+	<Refresh>刷新</Refresh>
+	<SelectedPathNotAFile>所选文件无效</SelectedPathNotAFile>
+	<SelectedPathNotAFolder>所选文件夹无效</SelectedPathNotAFolder>
+	<ActionCommandline>控制台命令</ActionCommandline>
+	<ActionCommandlineDescription>运行控制台命令</ActionCommandlineDescription>
+	<Command>命令</Command>
+	<WorkingDirectory>运行目录</WorkingDirectory>
+	<SaveOutputToVariable>保存到变量</SaveOutputToVariable>
+	<VariableName>变量名</VariableName>
+	<FailedToImportIcon>导入图标失败</FailedToImportIcon>
+	<IconSuccessfullyImportedToX>图标成功导入到 {0}</IconSuccessfullyImportedToX>
+	<ActionWriteText>输出文本</ActionWriteText>
+	<ActionWriteTextDescription>将配置的文本写入选定的文本框中</ActionWriteTextDescription>
+	<AddVariable>添加变量</AddVariable>
+	<TypeTextHere>在此处输入文本</TypeTextHere>
+</PluginStrings>

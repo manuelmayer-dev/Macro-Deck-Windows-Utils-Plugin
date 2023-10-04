@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace SuchByte.WindowsUtils.Models;
 
-namespace SuchByte.WindowsUtils.Models
+public class ComboboxItem
 {
-    public class ComboboxItem
-    {
-        public string Text { get; set; }
-        public object Value { get; set; }
+    public string Text { get; set; }
+    public object Value { get; set; }
 
-        public override string ToString()
-        {
-            return Text;
-        }
+    public override string ToString()
+    {
+        return Text;
     }
 }

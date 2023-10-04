@@ -3,55 +3,53 @@ using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace SuchByte.WindowsUtils.ViewModels
+namespace SuchByte.WindowsUtils.ViewModels;
+
+internal class MultiHotkeyActionConfigViewModel : ISerializableConfigViewModel
 {
-    internal class MultiHotkeyActionConfigViewModel : ISerializableConfigViewModel
+    private readonly PluginAction _action;
+    public MultiHotkeyActionConfigModel Configuration { get; set; }
+
+    ISerializableConfiguration ISerializableConfigViewModel.SerializableConfiguration => Configuration;
+
+    public List<IMultiHotkeyAction> MultiHotkeyActions
     {
-        private readonly PluginAction _action;
-        public MultiHotkeyActionConfigModel Configuration { get; set; }
+        get => Configuration.MultiHotkeyActions;
+        set => Configuration.MultiHotkeyActions = value;
+    }
 
-        ISerializableConfiguration ISerializableConfigViewModel.SerializableConfiguration => Configuration;
+    public bool SyncButtonState
+    {
+        get => Configuration.SyncButtonState;
+        set => Configuration.SyncButtonState = value;
+    }
 
-        public List<IMultiHotkeyAction> MultiHotkeyActions
+
+
+    public MultiHotkeyActionConfigViewModel(PluginAction action)
+    {
+        this.Configuration = MultiHotkeyActionConfigModel.Deserialize(action.Configuration);
+        this._action = action;
+    }
+
+    public bool SaveConfig()
+    {
+        try
         {
-            get => Configuration.MultiHotkeyActions;
-            set => Configuration.MultiHotkeyActions = value;
+            SetConfig();
+            MacroDeckLogger.Info(PluginInstance.Main, $"{GetType().Name}: config saved");
         }
-
-        public bool SyncButtonState
+        catch (Exception ex)
         {
-            get => Configuration.SyncButtonState;
-            set => Configuration.SyncButtonState = value;
+            MacroDeckLogger.Error(PluginInstance.Main, $"{GetType().Name}: Error while saving config: { ex.Message + Environment.NewLine + ex.StackTrace }");
         }
+        return true;
+    }
 
-
-
-        public MultiHotkeyActionConfigViewModel(PluginAction action)
-        {
-            this.Configuration = MultiHotkeyActionConfigModel.Deserialize(action.Configuration);
-            this._action = action;
-        }
-
-        public bool SaveConfig()
-        {
-            try
-            {
-                SetConfig();
-                MacroDeckLogger.Info(PluginInstance.Main, $"{GetType().Name}: config saved");
-            }
-            catch (Exception ex)
-            {
-                MacroDeckLogger.Error(PluginInstance.Main, $"{GetType().Name}: Error while saving config: { ex.Message + Environment.NewLine + ex.StackTrace }");
-            }
-            return true;
-        }
-
-        public void SetConfig()
-        {
-            _action.ConfigurationSummary = $"{Configuration.MultiHotkeyActions.Count} actions";
-            _action.Configuration = Configuration.Serialize();
-        }
+    public void SetConfig()
+    {
+        _action.ConfigurationSummary = $"{Configuration.MultiHotkeyActions.Count} actions";
+        _action.Configuration = Configuration.Serialize();
     }
 }

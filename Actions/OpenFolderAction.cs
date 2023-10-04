@@ -6,46 +6,43 @@ using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
 using SuchByte.WindowsUtils.Language;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
-namespace SuchByte.WindowsUtils.Actions
+namespace SuchByte.WindowsUtils.Actions;
+
+
+public class OpenFolderAction : PluginAction
 {
+    public override string Name => PluginLanguageManager.PluginStrings.ActionOpenFolder;
 
-    public class OpenFolderAction : PluginAction
+    public override string Description => PluginLanguageManager.PluginStrings.ActionOpenFolderDescription;
+
+    public override bool CanConfigure => true;
+
+    public override void Trigger(string clientId, ActionButton actionButton)
     {
-        public override string Name => PluginLanguageManager.PluginStrings.ActionOpenFolder;
-
-        public override string Description => PluginLanguageManager.PluginStrings.ActionOpenFolderDescription;
-
-        public override bool CanConfigure => true;
-
-        public override void Trigger(string clientId, ActionButton actionButton)
+        if (!String.IsNullOrWhiteSpace(this.Configuration))
         {
-            if (!String.IsNullOrWhiteSpace(this.Configuration))
+            try
             {
-                try
+                JObject configurationObject = JObject.Parse(this.Configuration);
+                var path = configurationObject["path"].ToString();
+
+                var p = new Process
                 {
-                    JObject configurationObject = JObject.Parse(this.Configuration);
-                    var path = configurationObject["path"].ToString();
-
-                    var p = new Process
+                    StartInfo = new ProcessStartInfo(path)
                     {
-                        StartInfo = new ProcessStartInfo(path)
-                        {
-                            UseShellExecute = true,
-                        }
-                    };
-                    p.Start();
-                }
-                catch { }
+                        UseShellExecute = true,
+                    }
+                };
+                p.Start();
             }
+            catch { }
         }
+    }
 
-        public override ActionConfigControl GetActionConfigControl(ActionConfigurator actionConfigurator)
-        {
-            return new FileFolderSelector(this, actionConfigurator, SelectType.FOLDER);
-        }
+    public override ActionConfigControl GetActionConfigControl(ActionConfigurator actionConfigurator)
+    {
+        return new FileFolderSelector(this, actionConfigurator, SelectType.FOLDER);
     }
 }

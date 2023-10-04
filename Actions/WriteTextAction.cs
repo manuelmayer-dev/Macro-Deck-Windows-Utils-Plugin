@@ -7,47 +7,45 @@ using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.GUI;
 using SuchByte.WindowsUtils.Language;
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Windows.Forms;
+using System.Linq;
 
-namespace SuchByte.WindowsUtils.Actions
+namespace SuchByte.WindowsUtils.Actions;
+
+public class WriteTextAction : PluginAction
 {
-    public class WriteTextAction : PluginAction
+    public override string Name => PluginLanguageManager.PluginStrings.ActionWriteText;
+
+    public override string Description => PluginLanguageManager.PluginStrings.ActionWriteTextDescription;
+
+    public override bool CanConfigure => true;
+
+    public override void Trigger(string clientId, ActionButton actionButton)
     {
-        public override string Name => PluginLanguageManager.PluginStrings.ActionWriteText;
-
-        public override string Description => PluginLanguageManager.PluginStrings.ActionWriteTextDescription;
-
-        public override bool CanConfigure => true;
-
-        public override void Trigger(string clientId, ActionButton actionButton)
+        if (!string.IsNullOrWhiteSpace(this.Configuration))
         {
-            if (!string.IsNullOrWhiteSpace(this.Configuration))
+            try
             {
-                try
-                {
-                    JObject configurationObject = JObject.Parse(this.Configuration);
-                    var text = configurationObject["text"].ToString();
+                JObject configurationObject = JObject.Parse(this.Configuration);
+                var text = configurationObject["text"].ToString();
 
-                    foreach (MacroDeck.Variables.Variable variable in MacroDeck.Variables.VariableManager.ListVariables.ToList().FindAll(x => text.ToLower().Contains("{" + x.Name.ToLower() + "}")))
-                    {
-                        text = text.Replace("{" + variable.Name + "}", variable.Value.ToString(), StringComparison.OrdinalIgnoreCase);
-                    }
+                var variables = MacroDeck.Variables.VariableManager.Variables.Where(x => text.ToLower().Contains("{" + x.Name.ToLower() + "}"));
 
-                    PluginInstance.Main.InputSimulator.Keyboard.TextEntry(text);
-                }
-                catch (Exception ex)
+                foreach (MacroDeck.Variables.Variable variable in variables)
                 {
-                    MacroDeckLogger.Warning(PluginInstance.Main, typeof(WriteTextAction) + ": " + ex.Message);
+                    text = text.Replace("{" + variable.Name + "}", variable.Value.ToString(), StringComparison.OrdinalIgnoreCase);
                 }
+
+                PluginInstance.Main.InputSimulator.Keyboard.TextEntry(text);
+            }
+            catch (Exception ex)
+            {
+                MacroDeckLogger.Warning(PluginInstance.Main, typeof(WriteTextAction) + ": " + ex.Message);
             }
         }
+    }
 
-        public override ActionConfigControl GetActionConfigControl(ActionConfigurator actionConfigurator)
-        {
-            return new TextSelector(this);
-        }
+    public override ActionConfigControl GetActionConfigControl(ActionConfigurator actionConfigurator)
+    {
+        return new TextSelector(this);
     }
 }

@@ -1,16 +1,12 @@
 ﻿using SuchByte.WindowsUtils.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SuchByte.WindowsUtils.ViewModels
+namespace SuchByte.WindowsUtils.ViewModels;
+
+internal interface ISerializableConfigViewModel
 {
-    internal interface ISerializableConfigViewModel
-    {
-        protected ISerializableConfiguration SerializableConfiguration { get; }
+    protected ISerializableConfiguration SerializableConfiguration { get; }
 
-        void SetConfig();
+    void SetConfig();
 
-        bool SaveConfig();
-    }
+    bool SaveConfig();
 }

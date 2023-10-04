@@ -1,68 +1,55 @@
-﻿using Newtonsoft.Json.Linq;
-using SuchByte.MacroDeck.ActionButton;
-using SuchByte.MacroDeck.GUI;
-using SuchByte.MacroDeck.GUI.CustomControls;
-using SuchByte.MacroDeck.Plugins;
+﻿using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.Actions;
-using SuchByte.WindowsUtils.GUI;
 using SuchByte.WindowsUtils.Language;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Reflection;
-using System.Threading;
-using WindowsInput;
 using WindowsInput;
 
-namespace SuchByte.WindowsUtils
+namespace SuchByte.WindowsUtils;
+
+public static class PluginInstance
 {
-    public static class PluginInstance
+    public static Main Main;
+}
+
+public class Main : MacroDeckPlugin
+{
+    public static Main Instance;
+
+    public InputSimulator InputSimulator = new();
+
+    public System.Timers.Timer TickTimer;
+
+    public Main()
     {
-        public static Main Main;
+        Instance = this;
+        PluginInstance.Main = this;
     }
 
-
-    public class Main : MacroDeckPlugin
+    public override void Enable()
     {
-        public static Main Instance;
-
-        public InputSimulator InputSimulator = new InputSimulator();
-
-        public System.Timers.Timer TickTimer;
-
-        public Main()
+        PluginLanguageManager.Initialize();
+        this.Actions = new List<PluginAction>
         {
-            Instance = this;
-            PluginInstance.Main = this;
-        }
+            new WriteTextAction(),
+            new CommandlineAction(),
+            new OpenFileAction(),
+            new OpenFolderAction(),
+            new StartApplicationAction(),
+            new IncreaseVolumeAction(),
+            new DecreaseVolumeAction(),
+            new MuteVolumeAction(),
+            new WindowsExplorerControlAction(),
+            //new WebrequestAction(), // TODO
+            //new WindowsOpenWebsiteAction(), // TODO
+            new HotkeyAction(),
+            //new MultiHotkeyAction(),
+        };
 
-        public override void Enable()
+        this.TickTimer = new System.Timers.Timer()
         {
-            PluginLanguageManager.Initialize();
-            this.Actions = new List<PluginAction>
-            {
-                new WriteTextAction(),
-                new CommandlineAction(),
-                new OpenFileAction(),
-                new OpenFolderAction(),
-                new StartApplicationAction(),
-                new IncreaseVolumeAction(),
-                new DecreaseVolumeAction(),
-                new MuteVolumeAction(),
-                new WindowsExplorerControlAction(),
-                //new WebrequestAction(), // TODO
-                //new WindowsOpenWebsiteAction(), // TODO
-                new HotkeyAction(),
-                //new MultiHotkeyAction(),
-            };
-
-            this.TickTimer = new System.Timers.Timer()
-            {
-                Enabled = true,
-                Interval = 2000,
-            };
-            this.TickTimer.Start();
-        }
+            Enabled = true,
+            Interval = 2000,
+        };
+        this.TickTimer.Start();
     }
 }

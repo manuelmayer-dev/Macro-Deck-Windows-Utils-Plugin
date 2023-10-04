@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 
-namespace SuchByte.WindowsUtils.Models
+namespace SuchByte.WindowsUtils.Models;
+
+public interface ISerializableConfiguration
 {
-    public interface ISerializableConfiguration
-    {
-        public string Serialize();
+    public string Serialize();
 
-        protected static T Deserialize<T>(string configuration) where T : ISerializableConfiguration, new() =>
-            !string.IsNullOrWhiteSpace(configuration) ? JsonSerializer.Deserialize<T>(configuration) : new T();
-    }
+    protected static T Deserialize<T>(string configuration) where T : ISerializableConfiguration, new() =>
+        !string.IsNullOrWhiteSpace(configuration) ? JsonSerializer.Deserialize<T>(configuration) : new T();
 }

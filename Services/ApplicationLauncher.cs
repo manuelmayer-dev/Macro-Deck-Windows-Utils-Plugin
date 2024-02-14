@@ -91,7 +91,7 @@ public class ApplicationLauncher
 
 				if (hWnd != IntPtr.Zero)
 				{
-					ShowWindow(hWnd, 1);
+					ShowWindow(hWnd, SW_RESTORE);
 					SetForegroundWindow(hWnd);
 					return;
 				}

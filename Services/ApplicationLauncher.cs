@@ -83,7 +83,7 @@ public class ApplicationLauncher
         IntPtr handle = p.MainWindowHandle;
         
         ShowWindow(handle, 5);
-		ShowWindow(handle, 10);
+	ShowWindow(handle, 10);
         
         if (!IsIconic(handle))
         {

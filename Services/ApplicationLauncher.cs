@@ -81,12 +81,13 @@ public class ApplicationLauncher
         if (p == null) return;
 
         IntPtr handle = p.MainWindowHandle;
-        if (SetForegroundWindow(handle))
+        
+        ShowWindow(handle, 5);
+		ShowWindow(handle, 10);
+        
+        if (!IsIconic(handle))
         {
-            if (!IsIconic(handle))
-            {
                 return;
-            }
         }
         MinimizeAndRestoreWindow(handle); // Fallback function
     }

@@ -35,6 +35,7 @@ public class CommandlineAction : PluginAction
                     StartInfo = new ProcessStartInfo("cmd.exe")
                     {
                         UseShellExecute = false,
+                        CreateNoWindow = true,
                         WorkingDirectory = workingDirectory,
                         Arguments = "/C " + command,
                         RedirectStandardOutput = saveVariable,
